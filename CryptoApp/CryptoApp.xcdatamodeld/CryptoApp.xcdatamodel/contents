@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BCH" representedClassName="BCH" syncable="YES" codeGenerationType="class"/>
+    <entity name="BCN" representedClassName="BCN" syncable="YES" codeGenerationType="class"/>
+    <entity name="BTC" representedClassName="BTC" syncable="YES" codeGenerationType="class">
+        <attribute name="priceUSD" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="EOS" representedClassName="EOS" syncable="YES" codeGenerationType="class"/>
+    <entity name="ETH" representedClassName="ETH" syncable="YES" codeGenerationType="class"/>
+    <entity name="LTC" representedClassName="LTC" syncable="YES" codeGenerationType="class"/>
+    <entity name="XRP" representedClassName="XRP" syncable="YES" codeGenerationType="class"/>
+    <elements>
+        <element name="BTC" positionX="-54" positionY="-9" width="128" height="75"/>
+        <element name="ETH" positionX="-36" positionY="9" width="128" height="45"/>
+        <element name="BCH" positionX="-18" positionY="27" width="128" height="45"/>
+        <element name="LTC" positionX="0" positionY="45" width="128" height="45"/>
+        <element name="BCN" positionX="18" positionY="63" width="128" height="45"/>
+        <element name="XRP" positionX="36" positionY="81" width="128" height="45"/>
+        <element name="EOS" positionX="-9" positionY="36" width="128" height="45"/>
+    </elements>
+</model>
