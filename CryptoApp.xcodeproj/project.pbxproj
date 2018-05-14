@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0247A5520A9152900C162CF /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0247A5420A9152900C162CF /* HistoryTableViewController.swift */; };
 		D0B2AAB820A4117E004AC219 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2AAB720A4117E004AC219 /* AppDelegate.swift */; };
 		D0B2AABA20A4117E004AC219 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2AAB920A4117E004AC219 /* ViewController.swift */; };
 		D0B2AABD20A4117E004AC219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B2AABB20A4117E004AC219 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D0247A5420A9152900C162CF /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		D0B2AAB420A4117E004AC219 /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B2AAB720A4117E004AC219 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B2AAB920A4117E004AC219 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				D0B2AAC620A41180004AC219 /* Info.plist */,
 				D0B2AABE20A4117E004AC219 /* CryptoApp.xcdatamodeld */,
 				D0B2AAE820A41BE1004AC219 /* CoreDataHandler.swift */,
+				D0247A5420A9152900C162CF /* HistoryTableViewController.swift */,
 				D0B2AAEA20A41FE9004AC219 /* coreDataHandlerETH.swift */,
 			);
 			path = CryptoApp;
@@ -205,19 +208,22 @@
 				TargetAttributes = {
 					D0B2AAB320A4117E004AC219 = {
 						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
 					};
 					D0B2AACA20A41180004AC219 = {
 						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
 						TestTargetID = D0B2AAB320A4117E004AC219;
 					};
 					D0B2AAD520A41180004AC219 = {
 						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
 						TestTargetID = D0B2AAB320A4117E004AC219;
 					};
 				};
 			};
 			buildConfigurationList = D0B2AAAF20A4117E004AC219 /* Build configuration list for PBXProject "CryptoApp" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -272,6 +278,7 @@
 				D0B2AAEB20A41FE9004AC219 /* coreDataHandlerETH.swift in Sources */,
 				D0B2AABA20A4117E004AC219 /* ViewController.swift in Sources */,
 				D0B2AAE920A41BE1004AC219 /* CoreDataHandler.swift in Sources */,
+				D0247A5520A9152900C162CF /* HistoryTableViewController.swift in Sources */,
 				D0B2AAC020A4117E004AC219 /* CryptoApp.xcdatamodeld in Sources */,
 				D0B2AAB820A4117E004AC219 /* AppDelegate.swift in Sources */,
 			);
@@ -436,8 +443,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -449,10 +455,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB6WLAWB6F;
 				INFOPLIST_FILE = CryptoApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs212.CryptoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -467,10 +471,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB6WLAWB6F;
 				INFOPLIST_FILE = CryptoApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs212.CryptoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -486,11 +488,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB6WLAWB6F;
 				INFOPLIST_FILE = CryptoAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs212.CryptoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -507,11 +505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB6WLAWB6F;
 				INFOPLIST_FILE = CryptoAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs212.CryptoAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -527,11 +521,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB6WLAWB6F;
 				INFOPLIST_FILE = CryptoAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs212.CryptoAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -547,11 +537,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB6WLAWB6F;
 				INFOPLIST_FILE = CryptoAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cs212.CryptoAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

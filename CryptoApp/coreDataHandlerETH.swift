@@ -15,12 +15,13 @@ class coreDataHandlerETH: NSObject {
         return appDelegate.persistentContainer.viewContext
     }
     
-    class func saveObject(price: String, timestamp: Date) -> Bool {
+    class func saveObject(symb: String, price: Double, timestamp: Date) -> Bool {
         let context = getContext()
-        let entity = NSEntityDescription.entity(forEntityName: "ETH", in: context)
+        let sym: String = symb
+        let entity = NSEntityDescription.entity(forEntityName: sym, in: context)
         let manageObject = NSManagedObject(entity: entity!, insertInto: context)
         
-        manageObject.setValue(price, forKey: "price")
+        manageObject.setValue(price, forKey: "priceUSD")
         manageObject.setValue(timestamp, forKey: "timestamp")
         
         
@@ -32,11 +33,55 @@ class coreDataHandlerETH: NSObject {
         }
     }
     
-    class func fetchObject() -> [ETH]? {
+    class func fetchObjectETH() -> [ETH]? {
         let context = getContext()
         var info:[ETH]? = nil
         do {
             info = try context.fetch(ETH.fetchRequest())
+            return info
+        }catch {
+            return info
+        }
+        
+    }
+    class func fetchObjectLTC() -> [LTC]? {
+        let context = getContext()
+        var info:[LTC]? = nil
+        do {
+            info = try context.fetch(LTC.fetchRequest())
+            return info
+        }catch {
+            return info
+        }
+        
+    }
+    class func fetchObjectXRP() -> [XRP]? {
+        let context = getContext()
+        var info:[XRP]? = nil
+        do {
+            info = try context.fetch(XRP.fetchRequest())
+            return info
+        }catch {
+            return info
+        }
+        
+    }
+    class func fetchObjectEOS() -> [EOS]? {
+        let context = getContext()
+        var info:[EOS]? = nil
+        do {
+            info = try context.fetch(EOS.fetchRequest())
+            return info
+        }catch {
+            return info
+        }
+        
+    }
+    class func fetchObjectBTC() -> [BTC]? {
+        let context = getContext()
+        var info:[BTC]? = nil
+        do {
+            info = try context.fetch(BTC.fetchRequest())
             return info
         }catch {
             return info

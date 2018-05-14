@@ -16,12 +16,12 @@ class CoreDataHandler: NSObject {
         return appDelegate.persistentContainer.viewContext
     }
     
-    class func saveObject(price: String, timestamp: Date) -> Bool {
+    class func saveObject(price: Double, timestamp: Date) -> Bool {
         let context = getContext()
         let entity = NSEntityDescription.entity(forEntityName: "BTC", in: context)
         let manageObject = NSManagedObject(entity: entity!, insertInto: context)
         
-        manageObject.setValue(price, forKey: "price")
+        manageObject.setValue(price, forKey: "priceUSD")
         manageObject.setValue(timestamp, forKey: "timestamp")
         
         
