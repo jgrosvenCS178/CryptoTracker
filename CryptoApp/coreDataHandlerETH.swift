@@ -40,7 +40,9 @@ class coreDataHandlerETH: NSObject {
             info = try context.fetch(ETH.fetchRequest())
             return info
         }catch {
+            print("fetch returned nil")
             return info
+            
         }
         
     }
@@ -51,6 +53,7 @@ class coreDataHandlerETH: NSObject {
             info = try context.fetch(LTC.fetchRequest())
             return info
         }catch {
+            print("fetch returned nil")
             return info
         }
         
@@ -62,6 +65,7 @@ class coreDataHandlerETH: NSObject {
             info = try context.fetch(XRP.fetchRequest())
             return info
         }catch {
+            print("fetch returned nil")
             return info
         }
         
@@ -73,6 +77,7 @@ class coreDataHandlerETH: NSObject {
             info = try context.fetch(EOS.fetchRequest())
             return info
         }catch {
+            print("fetch returned nil")
             return info
         }
         
@@ -84,6 +89,7 @@ class coreDataHandlerETH: NSObject {
             info = try context.fetch(BTC.fetchRequest())
             return info
         }catch {
+            print("fetch returned nil")
             return info
         }
         

@@ -18,7 +18,6 @@ extension URL {
     
 }
 
-
 class GetPrices{
     var results: coin?
     func getBaseURL() -> URL{
@@ -40,7 +39,6 @@ class GetPrices{
         print(newURL!)
         let task = URLSession.shared.dataTask(with: newURL!) { (data, response, error) in
             if let data = data {
-                print(data)
                 let jsonDecoder = JSONDecoder()
                 if let res = try? jsonDecoder.decode(coin.self, from: data)
                 {
@@ -49,12 +47,12 @@ class GetPrices{
                     
                 }
                 else {
-                    print("error")
+                    print(error as Any)
                 }
             }
         }
         task.resume()
-        sleep(1)
+        usleep(600000)
         var cprice: Double = 0.0
         if let newResults = self.results{
             if let bprice = newResults.price{

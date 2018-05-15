@@ -48,28 +48,29 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLabels()
+        setPrice(coin: "BTC")
+        
     }
     @IBAction func refresh(_ sender: Any) {
         if showCoins.contains("BTC") {
             setPrice(coin: "BTC")
-            sleep(1)
+            usleep(10000)
         }
         if showCoins.contains("LTC") {
             setPrice(coin: "LTC")
-            sleep(1)
+            usleep(10000)
         }
         if showCoins.contains("ETH") {
             setPrice(coin: "ETH")
-            sleep(1)
+            usleep(10000)
         }
         if showCoins.contains("EOS") {
             setPrice(coin: "EOS")
-            sleep(1)
+            usleep(10000)
         }
         if showCoins.contains("XRP") {
             setPrice(coin: "XRP")
-            sleep(1)
+            usleep(10000)
         }
     }
     
@@ -153,6 +154,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if index > 0{
                     l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
                 }
+                if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                    colorLabelGreen(l: l!)
+                }
+                else {
+                    colorLabelRed(l: l!)
+                }
             }
             case "ETH":
            
@@ -160,6 +167,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     let index = CoinData.count - 1
                     if index > 0{
                         l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
+                    }
+                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                        colorLabelGreen(l: l!)
+                    }
+                    else {
+                        colorLabelRed(l: l!)
                     }
                 }
             case "LTC":
@@ -169,6 +182,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     if index > 0{
                         l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
                     }
+                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                        colorLabelGreen(l: l!)
+                    }
+                    else {
+                        colorLabelRed(l: l!)
+                    }
                 }
             case "XRP":
            
@@ -177,6 +196,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     if index > 0{
                         l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
                     }
+                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                        colorLabelGreen(l: l!)
+                    }
+                    else {
+                        colorLabelRed(l: l!)
+                    }
                 }
             case "EOS":
             
@@ -184,6 +209,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     let index = CoinData.count - 1
                     if index > 0{
                         l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
+                    }
+                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                        colorLabelGreen(l: l!)
+                    }
+                    if CoinData[(index)].priceUSD < CoinData[(index - 1)].priceUSD {
+                        colorLabelRed(l: l!)
                     }
                 }
             default:
@@ -214,6 +245,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }
     }
     
+    func colorLabelGreen(l: UILabel){
+        l.backgroundColor = UIColor(displayP3Red: 0, green: 180, blue: 0, alpha: 0.3)
+    }
+    
+    func colorLabelRed(l: UILabel){
+        l.backgroundColor = UIColor(displayP3Red: 255, green: -80, blue: 40, alpha: 0.2)
+    }
     
 
 
