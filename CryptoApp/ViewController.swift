@@ -20,7 +20,7 @@ extension URL {
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
-    
+    let names: [String] = ["BITCOIN", "LITECOIN", "ETHERIUM", "RIPPLE", "EOS", "BITCOIN CASH", "BYTECOIN"]
     let symbols: [String] = ["BTC", "LTC", "ETH", "XRP", "EOS", "BCH", "BCN"]
     var row: Int = 0
     var getPrice = GetPrices()
@@ -38,7 +38,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView,
                     titleForRow row: Int,
                     forComponent component: Int) -> String? {
-        return symbols[row]
+        return names[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

@@ -9,20 +9,19 @@
 import UIKit
 
 class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-   
-    
-    
 
     let getDetail = GetDetail()
     var newData: Welcome? = nil
     var dataSuccess: Bool = false
-    @IBOutlet weak var logo: UIImageView!
-    // 1=bitcoin 2=bytecoin 3=litecoin 4=EOS 5=ETH 6=XRP 7=BCH
-    let logos: [UIImage] = [#imageLiteral(resourceName: "btc"),#imageLiteral(resourceName: "bcn"),#imageLiteral(resourceName: "ltc"),#imageLiteral(resourceName: "eos"),#imageLiteral(resourceName: "eth"),#imageLiteral(resourceName: "xrp"),#imageLiteral(resourceName: "bch")]
-    let symbols: [String] = ["BTC", "BCN", "LTC", "EOS", "ETH", "XRP", "BCH"]
-    let names: [String] = ["BITCOIN", "BYTECOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH"]
-   
     
+    // 1=bitcoin 2=bytecoin 3=litecoin 4=EOS 5=ETH 6=XRP 7=BCH
+    let logos: [UIImage] = [#imageLiteral(resourceName: "btc"),#imageLiteral(resourceName: "ltc"),#imageLiteral(resourceName: "eos"),#imageLiteral(resourceName: "eth"),#imageLiteral(resourceName: "xrp"),#imageLiteral(resourceName: "bch"),#imageLiteral(resourceName: "bcn")]
+    let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN"]
+    let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN"]
+    
+    
+    @IBOutlet weak var fiatController: UISegmentedControl!
+    @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var symb: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var mcap: UILabel!
@@ -30,7 +29,72 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var low: UILabel!
     @IBOutlet weak var delta: UILabel!
     @IBOutlet weak var volume: UILabel!
+
+    /////////////////////////////////////////////////////////////////////////
+    // FIAT SEGMENTED SELECTOR
+    //////////
     
+    @IBAction func fiat(_ sender: UISegmentedControl) {
+        
+        switch sender.selectedSegmentIndex {
+        case 0:
+            switch symb.text {
+                case "BTC":
+                    price.text = String(newData!.raw.btc.usd.price)
+                case "LTC":
+                    price.text = String(newData!.raw.ltc.usd.price)
+                case "ETH":
+                    price.text = String(newData!.raw.eth.usd.price)
+                case "EOS":
+                    price.text = String(newData!.raw.eth.usd.price)
+                case "XRP":
+                    price.text = String(newData!.raw.eth.usd.price)
+                default:
+                    break
+                
+            }
+        case 1:
+            switch symb.text {
+                case "BTC":
+                    price.text = String(newData!.raw.btc.eur.price)
+                case "LTC":
+                    price.text = String(newData!.raw.ltc.eur.price)
+                case "ETH":
+                    price.text = String(newData!.raw.eth.eur.price)
+                case "EOS":
+                    price.text = String(newData!.raw.eth.eur.price)
+                case "XRP":
+                    price.text = String(newData!.raw.eth.eur.price)
+                
+                default:
+                    break
+            }
+        case 2:
+            switch symb.text {
+                case "BTC":
+                    price.text = String(newData!.raw.btc.gbp.price)
+                case "LTC":
+                    price.text = String(newData!.raw.ltc.gbp.price)
+                case "ETH":
+                    price.text = String(newData!.raw.eth.gbp.price)
+                case "EOS":
+                    price.text = String(newData!.raw.eth.gbp.price)
+                case "XRP":
+                    price.text = String(newData!.raw.eth.gbp.price)
+                
+                default:
+                    break
+            }
+            
+        default:
+            break
+        }
+    }
+    
+    
+    //////////////////////////////////////////////////////
+    // VIEW DID LOAD
+    /////////
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +106,10 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
 
+    //////////////////////////////////////////////////////
+    // SET DATA
+    ////////
+    
     func setData() -> Bool {
         sleep(1)
         if let thisData = getDetail.results {
@@ -78,6 +146,10 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func setImage(){
         
     }
+    
+    /////////////////////////////////////////////////////////////////////
+    // SET LABELS
+    //////////
     
     func setLabels(_ symbol: String) {
         symb.text = symbol
@@ -142,9 +214,14 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
     
+    ////////////////////////////////////////////////////////////////////
+    // PICKERVIEW
+    ////////
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         logo.image = logos[row]
         setLabels(symbols[row])
+        fiatController.selectedSegmentIndex = 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -158,6 +235,10 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
+    //////////////////////////////////////////////////////////////////
+    // REFRESH BUTTON
+    /////////
     
     @IBAction func refresh(_ sender: Any) {
         getDetail.searchDetails()
