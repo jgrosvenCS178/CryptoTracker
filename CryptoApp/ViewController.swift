@@ -9,12 +9,23 @@
 import UIKit
 import CoreData
 
+extension URL {
+    func withQueriess(_ queries: [String: String]) -> URL? {
+        var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
+        components?.queryItems = queries.map { URLQueryItem(name: $0.0, value: $0.1) }
+        return components?.url
+    }
+}
+
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
     
     let symbols: [String] = ["BTC", "LTC", "ETH", "XRP", "EOS", "BCH", "BCN"]
     var row: Int = 0
     var getPrice = GetPrices()
     var showCoins: [String] = []
+    var getDetails = GetDetail()
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -52,6 +63,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getDetails.searchDetails()
+        
+        
         
         
     }
