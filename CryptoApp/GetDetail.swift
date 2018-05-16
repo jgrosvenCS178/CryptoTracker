@@ -30,7 +30,6 @@ class GetDetail {
                 {
                     print(res)
                     self.results = res
-                    
                 }
                 else {
                     print(error as Any)

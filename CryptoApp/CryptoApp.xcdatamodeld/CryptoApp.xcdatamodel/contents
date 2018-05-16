@@ -12,6 +12,7 @@
         <attribute name="priceUSD" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
+    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
     <entity name="EOS" representedClassName="EOS" syncable="YES" codeGenerationType="class">
         <attribute name="priceUSD" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -36,5 +37,6 @@
         <element name="ETH" positionX="-36" positionY="9" width="128" height="75"/>
         <element name="LTC" positionX="0" positionY="45" width="128" height="75"/>
         <element name="XRP" positionX="36" positionY="81" width="128" height="75"/>
+        <element name="Entity" positionX="0" positionY="63" width="128" height="45"/>
     </elements>
 </model>

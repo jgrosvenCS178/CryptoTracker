@@ -63,12 +63,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getDetails.searchDetails()
-        
-        
         
         
     }
+    
     @IBAction func refresh(_ sender: Any) {
         if showCoins.contains("BTC") {
             setPrice(coin: "BTC")
