@@ -15,7 +15,6 @@ extension URL {
         components?.queryItems = queries.map { URLQueryItem(name: $0.0, value: $0.1) }
         return components?.url
     }
-    
 }
 
 class GetPrices{
@@ -24,9 +23,6 @@ class GetPrices{
         return URL(string: "https://min-api.cryptocompare.com/data/price")!
     }
     
-    func getBitcoin(){
-        
-    }
     
     func setQuerySingle(_ coin: String) -> Dictionary<String, String>{
         let queryDictionary: [String : String] = ["fsym": coin, "tsyms": "USD"]

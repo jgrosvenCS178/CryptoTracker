@@ -94,5 +94,29 @@ class coreDataHandlerETH: NSObject {
         }
         
     }
+    class func fetchObjectBCH() -> [BCH]? {
+        let context = getContext()
+        var info:[BCH]? = nil
+        do {
+            info = try context.fetch(BCH.fetchRequest())
+            return info
+        }catch {
+            print("fetch returned nil")
+            return info
+        }
+        
+    }
+    class func fetchObjectBCN() -> [BCN]? {
+        let context = getContext()
+        var info:[BCN]? = nil
+        do {
+            info = try context.fetch(BCN.fetchRequest())
+            return info
+        }catch {
+            print("fetch returned nil")
+            return info
+        }
+        
+    }
     
 }

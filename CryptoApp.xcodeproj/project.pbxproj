@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D0247A5520A9152900C162CF /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0247A5420A9152900C162CF /* HistoryTableViewController.swift */; };
+		D076757E20ABBCFE00CEF782 /* GetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076757D20ABBCFE00CEF782 /* GetDetail.swift */; };
 		D0B2AAB820A4117E004AC219 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2AAB720A4117E004AC219 /* AppDelegate.swift */; };
 		D0B2AABA20A4117E004AC219 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2AAB920A4117E004AC219 /* ViewController.swift */; };
 		D0B2AABD20A4117E004AC219 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0B2AABB20A4117E004AC219 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		D0247A5420A9152900C162CF /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		D076757D20ABBCFE00CEF782 /* GetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDetail.swift; sourceTree = "<group>"; };
 		D0B2AAB420A4117E004AC219 /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B2AAB720A4117E004AC219 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B2AAB920A4117E004AC219 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,17 +109,18 @@
 		D0B2AAB620A4117E004AC219 /* CryptoApp */ = {
 			isa = PBXGroup;
 			children = (
-				D0B2AAB720A4117E004AC219 /* AppDelegate.swift */,
-				D0B2AAB920A4117E004AC219 /* ViewController.swift */,
+				D076757D20ABBCFE00CEF782 /* GetDetail.swift */,
 				D0B2AAEC20A42102004AC219 /* getPrices.swift */,
+				D0B2AAB920A4117E004AC219 /* ViewController.swift */,
 				D0B2AABB20A4117E004AC219 /* Main.storyboard */,
-				D0B2AAC120A41180004AC219 /* Assets.xcassets */,
-				D0B2AAC320A41180004AC219 /* LaunchScreen.storyboard */,
+				D0247A5420A9152900C162CF /* HistoryTableViewController.swift */,
 				D0B2AAC620A41180004AC219 /* Info.plist */,
 				D0B2AABE20A4117E004AC219 /* CryptoApp.xcdatamodeld */,
 				D0B2AAE820A41BE1004AC219 /* CoreDataHandler.swift */,
-				D0247A5420A9152900C162CF /* HistoryTableViewController.swift */,
 				D0B2AAEA20A41FE9004AC219 /* coreDataHandlerETH.swift */,
+				D0B2AAB720A4117E004AC219 /* AppDelegate.swift */,
+				D0B2AAC320A41180004AC219 /* LaunchScreen.storyboard */,
+				D0B2AAC120A41180004AC219 /* Assets.xcassets */,
 			);
 			path = CryptoApp;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				D0B2AABA20A4117E004AC219 /* ViewController.swift in Sources */,
 				D0B2AAE920A41BE1004AC219 /* CoreDataHandler.swift in Sources */,
 				D0247A5520A9152900C162CF /* HistoryTableViewController.swift in Sources */,
+				D076757E20ABBCFE00CEF782 /* GetDetail.swift in Sources */,
 				D0B2AAC020A4117E004AC219 /* CryptoApp.xcdatamodeld in Sources */,
 				D0B2AAB820A4117E004AC219 /* AppDelegate.swift in Sources */,
 			);

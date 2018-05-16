@@ -11,7 +11,7 @@ import CoreData
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    let symbols: [String] = ["BTC", "LTC", "ETH", "XRP", "EOS"]
+    let symbols: [String] = ["BTC", "LTC", "ETH", "XRP", "EOS", "BCH", "BCN"]
     var row: Int = 0
     var getPrice = GetPrices()
     var showCoins: [String] = []
@@ -21,7 +21,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 5
+        return symbols.count
     }
     
     func pickerView(_ pickerView: UIPickerView,
@@ -39,16 +39,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var ethl: UILabel!
     @IBOutlet weak var xrpl: UILabel!
     @IBOutlet weak var eosl: UILabel!
+    @IBOutlet weak var bchl: UILabel!
+    @IBOutlet weak var bcnl: UILabel!
     
     @IBOutlet weak var btcs: UILabel!
     @IBOutlet weak var ltcs: UILabel!
     @IBOutlet weak var eths: UILabel!
     @IBOutlet weak var xrps: UILabel!
     @IBOutlet weak var eoss: UILabel!
+    @IBOutlet weak var bchc: UILabel!
+    @IBOutlet weak var bcnc: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setPrice(coin: "BTC")
+        
         
     }
     @IBAction func refresh(_ sender: Any) {
@@ -81,15 +85,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     func getBTCPrice() -> Double? {
         return getPrice.searchSingle("BTC")
     }
@@ -104,6 +99,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     func getEOSPrice() -> Double? {
         return getPrice.searchSingle("EOS")
+    }
+    func getBCHPrice() -> Double? {
+        return getPrice.searchSingle("BCH")
+    }
+    func getBCNPrice() -> Double? {
+        return getPrice.searchSingle("BCN")
     }
     
     
@@ -137,6 +138,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             l = eosl
             s = eoss
             
+        case "BCH":
+            p = getBCHPrice()
+            l = bchc
+            s = bchl
+            
+        case "BCN":
+            p = getBCNPrice()
+            l = bcnc
+            s = bcnl
+            
         default:
             print("error")
         }
@@ -152,13 +163,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if let CoinData = coreDataHandlerETH.fetchObjectBTC(){
                 let index = CoinData.count - 1
                 if index > 0{
-                    l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
+                    l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
                 }
-                if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-                    colorLabelGreen(l: l!)
-                }
-                else {
-                    colorLabelRed(l: l!)
+                if CoinData.count > 1 {
+                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                        colorLabelGreen(l: l!)
+                    }
+                    else {
+                        colorLabelRed(l: l!)
+                    }
                 }
             }
             case "ETH":
@@ -166,13 +179,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectETH(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
+                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
                     }
-                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-                        colorLabelGreen(l: l!)
-                    }
-                    else {
-                        colorLabelRed(l: l!)
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                        }
+                        else {
+                            colorLabelRed(l: l!)
+                        }
                     }
                 }
             case "LTC":
@@ -180,13 +195,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectLTC(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
+                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
                     }
-                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-                        colorLabelGreen(l: l!)
-                    }
-                    else {
-                        colorLabelRed(l: l!)
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                        }
+                        else {
+                            colorLabelRed(l: l!)
+                        }
                     }
                 }
             case "XRP":
@@ -194,13 +211,15 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectXRP(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
+                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
                     }
-                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-                        colorLabelGreen(l: l!)
-                    }
-                    else {
-                        colorLabelRed(l: l!)
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                        }
+                        else {
+                            colorLabelRed(l: l!)
+                        }
                     }
                 }
             case "EOS":
@@ -208,13 +227,49 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectEOS(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.6f", CoinData[(index)].priceUSD)
+                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
                     }
-                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-                        colorLabelGreen(l: l!)
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                        }
+                        if CoinData[(index)].priceUSD < CoinData[(index - 1)].priceUSD {
+                            colorLabelRed(l: l!)
+                        }
                     }
-                    if CoinData[(index)].priceUSD < CoinData[(index - 1)].priceUSD {
-                        colorLabelRed(l: l!)
+                }
+                
+            case "BCH":
+                
+                if let CoinData = coreDataHandlerETH.fetchObjectBCH(){
+                    let index = CoinData.count - 1
+                    if index > 0{
+                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
+                    }
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                        }
+                        if CoinData[(index)].priceUSD < CoinData[(index - 1)].priceUSD {
+                            colorLabelRed(l: l!)
+                        }
+                    }
+                }
+                
+            case "BCN":
+                
+                if let CoinData = coreDataHandlerETH.fetchObjectBCN(){
+                    let index = CoinData.count - 1
+                    if index > 0{
+                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
+                    }
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                        }
+                        if CoinData[(index)].priceUSD < CoinData[(index - 1)].priceUSD {
+                            colorLabelRed(l: l!)
+                        }
                     }
                 }
             default:
