@@ -10,6 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
+    var getPrice = GetPrices()
     private let getDetail = GetDetail()
     private var newData: Welcome? = nil
     private var dataSuccess: Bool = false
@@ -47,7 +48,12 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 case "EOS":
                     price.text = String(newData!.raw.eth.usd.price)
                 case "XRP":
-                    price.text = String(newData!.raw.eth.usd.price)
+                    price.text = String(newData!.raw.xrp.usd.price)
+                case "BCH":
+                    price.text = String(getPrice.searchSingle("BCH"))
+                case "BCN":
+                    price.text = String(getPrice.searchSingle("BCN"))
+                
                 default:
                     break
                 
@@ -61,10 +67,13 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 case "ETH":
                     price.text = String(newData!.raw.eth.eur.price)
                 case "EOS":
-                    price.text = String(newData!.raw.eth.eur.price)
+                    price.text = String(newData!.raw.eos.eur.price)
                 case "XRP":
-                    price.text = String(newData!.raw.eth.eur.price)
-                
+                    price.text = String(newData!.raw.xrp.eur.price)
+                case "BCH":
+                    fiatController.selectedSegmentIndex = 0
+                case "BCN":
+                    fiatController.selectedSegmentIndex = 0
                 default:
                     break
             }
@@ -77,14 +86,16 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 case "ETH":
                     price.text = String(newData!.raw.eth.gbp.price)
                 case "EOS":
-                    price.text = String(newData!.raw.eth.gbp.price)
+                    price.text = String(newData!.raw.eos.gbp.price)
                 case "XRP":
-                    price.text = String(newData!.raw.eth.gbp.price)
-                
+                    price.text = String(newData!.raw.xrp.gbp.price)
+                case "BCH":
+                    fiatController.selectedSegmentIndex = 0
+                case "BCN":
+                    fiatController.selectedSegmentIndex = 0
                 default:
                     break
             }
-            
         default:
             break
         }
@@ -162,6 +173,7 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             low.text = String(newData!.raw.btc.usd.low24Hour)
             delta.text = String(newData!.raw.btc.usd.change24Hour)
             volume.text = String(newData!.raw.btc.usd.totalvolume24Hto)
+       
         case "LTC":
             price.text = String(newData!.raw.ltc.usd.price)
             mcap.text = String(newData!.raw.ltc.usd.mktcap)
@@ -169,6 +181,7 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             low.text = String(newData!.raw.ltc.usd.low24Hour)
             delta.text = String(newData!.raw.ltc.usd.change24Hour)
             volume.text = String(newData!.raw.ltc.usd.totalvolume24Hto)
+        
         case "EOS":
             price.text = String(newData!.raw.eos.usd.price)
             mcap.text = String(newData!.raw.eos.usd.mktcap)
@@ -194,14 +207,15 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             volume.text = String(newData!.raw.xrp.usd.totalvolume24Hto)
             
         case "BCH":
-            price.text = "no data available"
+            price.text = String(getPrice.searchSingle("BCH"))
             mcap.text = "no data available"
             high.text = "no data available"
             low.text = "no data available"
             delta.text = "no data available"
             volume.text = "no data available"
+        
         case "BCN":
-            price.text = "no data available"
+            price.text = String(getPrice.searchSingle("BCN"))
             mcap.text = "no data available"
             high.text = "no data available"
             low.text = "no data available"
@@ -211,7 +225,6 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         default :
             break
         }
-        
     }
     
     ////////////////////////////////////////////////////////////////////
@@ -250,16 +263,4 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         fiatController.selectedSegmentIndex = 0
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
