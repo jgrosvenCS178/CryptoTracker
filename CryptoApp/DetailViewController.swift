@@ -10,15 +10,14 @@ import UIKit
 
 class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    let getDetail = GetDetail()
-    var newData: Welcome? = nil
-    var dataSuccess: Bool = false
+    private let getDetail = GetDetail()
+    private var newData: Welcome? = nil
+    private var dataSuccess: Bool = false
     
-    // 1=bitcoin 2=bytecoin 3=litecoin 4=EOS 5=ETH 6=XRP 7=BCH
+    // 1=bitcoin 2=litecoin 3=EOS 4=ETH 5=XRP 6=BCH 7=BCN
     let logos: [UIImage] = [#imageLiteral(resourceName: "btc"),#imageLiteral(resourceName: "ltc"),#imageLiteral(resourceName: "eos"),#imageLiteral(resourceName: "eth"),#imageLiteral(resourceName: "xrp"),#imageLiteral(resourceName: "bch"),#imageLiteral(resourceName: "bcn")]
     let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN"]
     let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN"]
-    
     
     @IBOutlet weak var fiatController: UISegmentedControl!
     @IBOutlet weak var logo: UIImageView!
@@ -92,7 +91,7 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    //////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
     // VIEW DID LOAD
     /////////
     
@@ -106,7 +105,7 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
 
-    //////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
     // SET DATA
     ////////
     
@@ -116,6 +115,7 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             newData = thisData
             print("data success")
             dataSuccess = true
+            return dataSuccess
         }
         else {
             usleep(1500000)
@@ -127,7 +127,7 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
             else {
                 print("inner fail")
-                sleep(1)
+                sleep(3)
                 if let thisData = getDetail.results {
                     newData = thisData
                     print("data success third try")
@@ -136,18 +136,18 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 }
                 else {
                     print("Data Failure")
+                    dataSuccess = false
                     return false
                 }
             }
         }
-        return false
     }
     
     func setImage(){
         
     }
     
-    /////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////
     // SET LABELS
     //////////
     
@@ -242,13 +242,13 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBAction func refresh(_ sender: Any) {
         getDetail.searchDetails()
-        sleep(3)
          if setData(){
             setLabels(symb.text!)
         }
          else {
             print("reload failure")
         }
+        fiatController.selectedSegmentIndex = 0
     }
     
     
