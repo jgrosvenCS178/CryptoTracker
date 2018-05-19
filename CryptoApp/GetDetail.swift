@@ -15,7 +15,7 @@ class GetDetail {
     }
 
     func setQueryDetail() -> Dictionary<String, String>{
-        let queryDictionary: [String : String] = ["fsyms": "BTC,LTC,ETH,XRP,EOS,BCN,BCH", "tsyms": "USD,GBP,EUR"]
+        let queryDictionary: [String : String] = ["fsyms": "BTC,LTC,ETH,XRP,EOS", "tsyms": "USD,GBP,EUR"]
         return queryDictionary
     }
 
@@ -58,7 +58,6 @@ struct Display: Codable {
     let btc, ltc: DisplayBtc
     let eth, xrp: DisplayEth
     let eos: DisplayBtc
-    
     
     enum CodingKeys: String, CodingKey {
         case btc = "BTC"
@@ -208,7 +207,6 @@ struct Eur: Codable {
 
 enum Market: String, Codable {
     case cccagg = "CCCAGG"
-    case empty = "\n"
 }
 
 enum Tosymbol: String, Codable {
@@ -272,215 +270,4 @@ struct FluffyGBP: Codable {
         case totalvolume24H = "TOTALVOLUME24H"
         case totalvolume24Hto = "TOTALVOLUME24HTO"
     }
-    struct Welcome2: Codable {
-        let raw: Raw
-        let display: Display
-        
-        enum CodingKeys: String, CodingKey {
-            case raw = "RAW"
-            case display = "DISPLAY"
-        }
-    }
-    
-    struct Display: Codable {
-        let bcn: DisplayAda
-        let bch: DisplayBch
-        let ada: DisplayAda
-        
-        enum CodingKeys: String, CodingKey {
-            case bcn = "BCN"
-            case bch = "BCH"
-            case ada = "ADA"
-        }
-    }
-    
-    struct DisplayAda: Codable {
-        let usd: [String: String]
-        let eur, gbp: PurpleEur
-        
-        enum CodingKeys: String, CodingKey {
-            case usd = "USD"
-            case eur = "EUR"
-            case gbp = "GBP"
-        }
-    }
-    
-    struct PurpleEur: Codable {
-        let fromsymbol, tosymbol, market, price: String
-        let lastupdate, lastvolume, lastvolumeto: String
-        let lasttradeid: Int
-        let volumeday, volumedayto, volume24Hour, volume24Hourto: String
-        let openday, highday, lowday, open24Hour: String
-        let high24Hour, low24Hour, lastmarket, change24Hour: String
-        let changepct24Hour, changeday, changepctday, supply: String
-        let mktcap, totalvolume24H, totalvolume24Hto: String
-        
-        enum CodingKeys: String, CodingKey {
-            case fromsymbol = "FROMSYMBOL"
-            case tosymbol = "TOSYMBOL"
-            case market = "MARKET"
-            case price = "PRICE"
-            case lastupdate = "LASTUPDATE"
-            case lastvolume = "LASTVOLUME"
-            case lastvolumeto = "LASTVOLUMETO"
-            case lasttradeid = "LASTTRADEID"
-            case volumeday = "VOLUMEDAY"
-            case volumedayto = "VOLUMEDAYTO"
-            case volume24Hour = "VOLUME24HOUR"
-            case volume24Hourto = "VOLUME24HOURTO"
-            case openday = "OPENDAY"
-            case highday = "HIGHDAY"
-            case lowday = "LOWDAY"
-            case open24Hour = "OPEN24HOUR"
-            case high24Hour = "HIGH24HOUR"
-            case low24Hour = "LOW24HOUR"
-            case lastmarket = "LASTMARKET"
-            case change24Hour = "CHANGE24HOUR"
-            case changepct24Hour = "CHANGEPCT24HOUR"
-            case changeday = "CHANGEDAY"
-            case changepctday = "CHANGEPCTDAY"
-            case supply = "SUPPLY"
-            case mktcap = "MKTCAP"
-            case totalvolume24H = "TOTALVOLUME24H"
-            case totalvolume24Hto = "TOTALVOLUME24HTO"
-        }
-    }
-    
-    struct DisplayBch: Codable {
-        let usd, eur: [String: String]
-        let gbp: PurpleEur
-        
-        enum CodingKeys: String, CodingKey {
-            case usd = "USD"
-            case eur = "EUR"
-            case gbp = "GBP"
-        }
-    }
-    
-    struct Raw: Codable {
-        let bcn: RawAda
-        let bch: RawBch
-        let ada: RawAda
-        
-        enum CodingKeys: String, CodingKey {
-            case bcn = "BCN"
-            case bch = "BCH"
-            case ada = "ADA"
-        }
-    }
-    
-    struct RawAda: Codable {
-        let usd: Usd
-        let eur, gbp: FluffyEur
-        
-        enum CodingKeys: String, CodingKey {
-            case usd = "USD"
-            case eur = "EUR"
-            case gbp = "GBP"
-        }
-    }
-    
-    struct FluffyEur: Codable {
-        let type, market, fromsymbol, tosymbol: String
-        let flags: String
-        let price: Double
-        let lastupdate, lastvolume, lastvolumeto, lasttradeid: Int
-        let volumeday, volumedayto: Int
-        let volume24Hour, volume24Hourto, openday, highday: Double
-        let lowday, open24Hour, high24Hour, low24Hour: Double
-        let lastmarket: String
-        let change24Hour, changepct24Hour, changeday, changepctday: Double
-        let supply, mktcap, totalvolume24H, totalvolume24Hto: Double
-        
-        enum CodingKeys: String, CodingKey {
-            case type = "TYPE"
-            case market = "MARKET"
-            case fromsymbol = "FROMSYMBOL"
-            case tosymbol = "TOSYMBOL"
-            case flags = "FLAGS"
-            case price = "PRICE"
-            case lastupdate = "LASTUPDATE"
-            case lastvolume = "LASTVOLUME"
-            case lastvolumeto = "LASTVOLUMETO"
-            case lasttradeid = "LASTTRADEID"
-            case volumeday = "VOLUMEDAY"
-            case volumedayto = "VOLUMEDAYTO"
-            case volume24Hour = "VOLUME24HOUR"
-            case volume24Hourto = "VOLUME24HOURTO"
-            case openday = "OPENDAY"
-            case highday = "HIGHDAY"
-            case lowday = "LOWDAY"
-            case open24Hour = "OPEN24HOUR"
-            case high24Hour = "HIGH24HOUR"
-            case low24Hour = "LOW24HOUR"
-            case lastmarket = "LASTMARKET"
-            case change24Hour = "CHANGE24HOUR"
-            case changepct24Hour = "CHANGEPCT24HOUR"
-            case changeday = "CHANGEDAY"
-            case changepctday = "CHANGEPCTDAY"
-            case supply = "SUPPLY"
-            case mktcap = "MKTCAP"
-            case totalvolume24H = "TOTALVOLUME24H"
-            case totalvolume24Hto = "TOTALVOLUME24HTO"
-        }
-    }
-    
-    struct Usd: Codable {
-        let type, market, fromsymbol, tosymbol: String
-        let flags: String
-        let price: Double
-        let lastupdate: Int
-        let lastvolume, lastvolumeto: Double
-        let lasttradeid: String
-        let volumeday, volumedayto, volume24Hour, volume24Hourto: Double
-        let openday, highday, lowday, open24Hour: Double
-        let high24Hour, low24Hour: Double
-        let lastmarket: String
-        let change24Hour, changepct24Hour, changeday, changepctday: Double
-        let supply, mktcap, totalvolume24H, totalvolume24Hto: Double
-        
-        enum CodingKeys: String, CodingKey {
-            case type = "TYPE"
-            case market = "MARKET"
-            case fromsymbol = "FROMSYMBOL"
-            case tosymbol = "TOSYMBOL"
-            case flags = "FLAGS"
-            case price = "PRICE"
-            case lastupdate = "LASTUPDATE"
-            case lastvolume = "LASTVOLUME"
-            case lastvolumeto = "LASTVOLUMETO"
-            case lasttradeid = "LASTTRADEID"
-            case volumeday = "VOLUMEDAY"
-            case volumedayto = "VOLUMEDAYTO"
-            case volume24Hour = "VOLUME24HOUR"
-            case volume24Hourto = "VOLUME24HOURTO"
-            case openday = "OPENDAY"
-            case highday = "HIGHDAY"
-            case lowday = "LOWDAY"
-            case open24Hour = "OPEN24HOUR"
-            case high24Hour = "HIGH24HOUR"
-            case low24Hour = "LOW24HOUR"
-            case lastmarket = "LASTMARKET"
-            case change24Hour = "CHANGE24HOUR"
-            case changepct24Hour = "CHANGEPCT24HOUR"
-            case changeday = "CHANGEDAY"
-            case changepctday = "CHANGEPCTDAY"
-            case supply = "SUPPLY"
-            case mktcap = "MKTCAP"
-            case totalvolume24H = "TOTALVOLUME24H"
-            case totalvolume24Hto = "TOTALVOLUME24HTO"
-        }
-    }
-    
-    struct RawBch: Codable {
-        let usd, eur: Usd
-        let gbp: FluffyEur
-        
-        enum CodingKeys: String, CodingKey {
-            case usd = "USD"
-            case eur = "EUR"
-            case gbp = "GBP"
-        }
-    }
-
 }
