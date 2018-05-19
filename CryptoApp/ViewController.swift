@@ -209,7 +209,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if let CoinData = coreDataHandlerETH.fetchObjectBTC(){
                 let index = CoinData.count - 1
                 if index > 0{
-                    l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
+                    l!.text = String(CoinData[(index)].priceUSD)
                 }
 //                if CoinData.count > 1 {
 //                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
@@ -225,7 +225,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectETH(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
+                        l!.text = String(CoinData[(index)].priceUSD)
                     }
 //                    if CoinData.count > 1 {
 //                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
@@ -241,7 +241,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectLTC(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
+                        l!.text = String(CoinData[(index)].priceUSD)
                     }
 //                    if CoinData.count > 1 {
 //                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
@@ -257,7 +257,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectXRP(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
+                        l!.text = String(CoinData[(index)].priceUSD)
                     }
 //                    if CoinData.count > 1 {
 //                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
@@ -273,7 +273,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectEOS(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
+                        l!.text = String(CoinData[(index)].priceUSD)
                     }
                     if CoinData.count > 1 {
                         if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
@@ -290,7 +290,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectBCH(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
+                        l!.text = String(CoinData[(index)].priceUSD)
                     }
                     if CoinData.count > 1 {
                         if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
@@ -307,7 +307,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if let CoinData = coreDataHandlerETH.fetchObjectBCN(){
                     let index = CoinData.count - 1
                     if index > 0{
-                        l!.text = String(format: "%.8f", CoinData[(index)].priceUSD)
+                        l!.text = String(CoinData[(index)].priceUSD)
                     }
                     if CoinData.count > 1 {
                         if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
@@ -337,7 +337,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             if let BTCData = CoreDataHandler.fetchObject(){
                 let index = BTCData.count - 1
                 if index > 0{
-                btcl.text = String(format: "%.6f", BTCData[(index)].priceUSD)
+                btcl.text = String(BTCData[(index)].priceUSD)
                 }
             }
             if let _ = btcl.text {

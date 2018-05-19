@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D0247A5520A9152900C162CF /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0247A5420A9152900C162CF /* HistoryTableViewController.swift */; };
+		D03DBE9E20AFE364002485A0 /* GetMoreDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DBE9D20AFE364002485A0 /* GetMoreDetail.swift */; };
 		D076757E20ABBCFE00CEF782 /* GetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076757D20ABBCFE00CEF782 /* GetDetail.swift */; };
 		D076758020ABF90200CEF782 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076757F20ABF90200CEF782 /* DetailViewController.swift */; };
 		D0B2AAB820A4117E004AC219 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B2AAB720A4117E004AC219 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		D0247A5420A9152900C162CF /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		D03DBE9D20AFE364002485A0 /* GetMoreDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoreDetail.swift; sourceTree = "<group>"; };
 		D076757D20ABBCFE00CEF782 /* GetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDetail.swift; sourceTree = "<group>"; };
 		D076757F20ABF90200CEF782 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D0B2AAB420A4117E004AC219 /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				D076757D20ABBCFE00CEF782 /* GetDetail.swift */,
+				D03DBE9D20AFE364002485A0 /* GetMoreDetail.swift */,
 				D076757F20ABF90200CEF782 /* DetailViewController.swift */,
 				D0B2AAEC20A42102004AC219 /* getPrices.swift */,
 				D0B2AAB920A4117E004AC219 /* ViewController.swift */,
@@ -284,6 +287,7 @@
 				D0B2AAED20A42102004AC219 /* getPrices.swift in Sources */,
 				D0B2AAEB20A41FE9004AC219 /* coreDataHandlerETH.swift in Sources */,
 				D0B2AABA20A4117E004AC219 /* ViewController.swift in Sources */,
+				D03DBE9E20AFE364002485A0 /* GetMoreDetail.swift in Sources */,
 				D0B2AAE920A41BE1004AC219 /* CoreDataHandler.swift in Sources */,
 				D0247A5520A9152900C162CF /* HistoryTableViewController.swift in Sources */,
 				D076757E20ABBCFE00CEF782 /* GetDetail.swift in Sources */,
