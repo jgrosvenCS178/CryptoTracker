@@ -42,67 +42,67 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         case 0:
             switch symb.text {
                 case "BTC":
-                    price.text = String(newData!.raw.btc.usd.price)
-                    mcap.text = String(newData!.raw.btc.usd.mktcap)
-                    high.text = String(newData!.raw.btc.usd.high24Hour)
-                    low.text = String(newData!.raw.btc.usd.low24Hour)
-                    delta.text = String(newData!.raw.btc.usd.change24Hour)
+                    price.text = "$\(String(newData!.raw.btc.usd.price))"
+                    mcap.text = "$\(String(newData!.raw.btc.usd.mktcap))"
+                    high.text = "$\(String(newData!.raw.btc.usd.high24Hour))"
+                    low.text = "$\(String(newData!.raw.btc.usd.low24Hour))"
+                    delta.text = "$\(String(format: "%.2f",newData!.raw.btc.usd.change24Hour))"
                     volume.text = String(newData!.raw.btc.usd.totalvolume24Hto)
                 case "LTC":
-                    price.text = String(newData!.raw.ltc.usd.price)
-                    mcap.text = String(newData!.raw.ltc.usd.mktcap)
-                    high.text = String(newData!.raw.ltc.usd.high24Hour)
-                    low.text = String(newData!.raw.ltc.usd.low24Hour)
-                    delta.text = String(newData!.raw.ltc.usd.change24Hour)
+                    price.text = "$\(String(newData!.raw.ltc.usd.price))"
+                    mcap.text = "$\(String(newData!.raw.ltc.usd.mktcap))"
+                    high.text = "$\(String(newData!.raw.ltc.usd.high24Hour))"
+                    low.text = "$\(String(newData!.raw.ltc.usd.low24Hour))"
+                    delta.text = "$\(String(format: "%.2f",newData!.raw.ltc.usd.change24Hour))"
                     volume.text = String(newData!.raw.ltc.usd.totalvolume24Hto)
                 case "ETH":
-                    price.text = String(newData!.raw.eth.usd.price)
-                    mcap.text = String(newData!.raw.eth.usd.mktcap)
-                    high.text = String(newData!.raw.eth.usd.high24Hour)
-                    low.text = String(newData!.raw.eth.usd.low24Hour)
-                    delta.text = String(newData!.raw.eth.usd.change24Hour)
+                    price.text = "$\(String(newData!.raw.eth.usd.price))"
+                    mcap.text = "$\(String(newData!.raw.eth.usd.mktcap))"
+                    high.text = "$\(String(newData!.raw.eth.usd.high24Hour))"
+                    low.text = "$\(String(newData!.raw.eth.usd.low24Hour))"
+                    delta.text = "$\(String(format: "%.2f",newData!.raw.eth.usd.change24Hour))"
                     volume.text = String(newData!.raw.eth.usd.totalvolume24Hto)
                 case "EOS":
-                    price.text = String(newData!.raw.eos.usd.price)
-                    mcap.text = String(newData!.raw.eos.usd.mktcap)
-                    high.text = String(newData!.raw.eos.usd.high24Hour)
-                    low.text = String(newData!.raw.eos.usd.low24Hour)
-                    delta.text = String(newData!.raw.eos.usd.change24Hour)
+                    price.text = "$\(String(newData!.raw.eos.usd.price))"
+                    mcap.text = "$\(String(newData!.raw.eos.usd.mktcap))"
+                    high.text = "$\(String(newData!.raw.eos.usd.high24Hour))"
+                    low.text = "$\(String(newData!.raw.eos.usd.low24Hour))"
+                    delta.text = "$\(String(format: "%.2f",newData!.raw.eos.usd.change24Hour))"
                     volume.text = String(newData!.raw.eos.usd.totalvolume24Hto)
                 case "XRP":
-                    price.text = String(newData!.raw.xrp.usd.price)
-                    mcap.text = String(newData!.raw.xrp.usd.mktcap)
-                    high.text = String(newData!.raw.xrp.usd.high24Hour)
-                    low.text = String(newData!.raw.xrp.usd.low24Hour)
-                    delta.text = String(newData!.raw.xrp.usd.change24Hour)
+                    price.text = "$\(String(newData!.raw.xrp.usd.price))"
+                    mcap.text = "$\(String(newData!.raw.xrp.usd.mktcap))"
+                    high.text = "$\(String(newData!.raw.xrp.usd.high24Hour))"
+                    low.text = "$\(String(newData!.raw.xrp.usd.low24Hour))"
+                    delta.text = "$\(String(format: "%.2f",newData!.raw.xrp.usd.change24Hour))"
                     volume.text = String(newData!.raw.xrp.usd.totalvolume24Hto)
                 case "BCH":
-                    price.text = String(moreData!.raw.bch.usd.price)
-                    mcap.text = String(moreData!.raw.bch.usd.mktcap)
-                    high.text = String(moreData!.raw.bch.usd.high24Hour)
-                    low.text = String(moreData!.raw.bch.usd.low24Hour)
-                    delta.text = String(moreData!.raw.bch.usd.change24Hour)
+                    price.text = "$\(String(moreData!.raw.bch.usd.price))"
+                    mcap.text = "$\(String(moreData!.raw.bch.usd.mktcap))"
+                    high.text = "$\(String(moreData!.raw.bch.usd.high24Hour))"
+                    low.text = "$\(String(moreData!.raw.bch.usd.low24Hour))"
+                    delta.text = "$\(String(format: "%.2f",moreData!.raw.bch.usd.change24Hour))"
                     volume.text = String(moreData!.raw.bch.usd.totalvolume24Hto)
                 case "BCN":
-                    price.text = String(moreData!.raw.bcn.usd.price)
-                    mcap.text = String(moreData!.raw.bcn.usd.mktcap)
-                    high.text = String(moreData!.raw.bcn.usd.high24Hour)
-                    low.text = String(moreData!.raw.bcn.usd.low24Hour)
-                    delta.text = String(moreData!.raw.bcn.usd.change24Hour)
+                    price.text = "$\(String(moreData!.raw.bcn.usd.price))"
+                    mcap.text = "$\(String(moreData!.raw.bcn.usd.mktcap))"
+                    high.text = "$\(String(moreData!.raw.bcn.usd.high24Hour))"
+                    low.text = "$\(String(moreData!.raw.bcn.usd.low24Hour))"
+                    delta.text = "$\(String(format: "%.2f",moreData!.raw.bcn.usd.change24Hour))"
                     volume.text = String(moreData!.raw.bcn.usd.totalvolume24Hto)
                 case "ADA":
-                    price.text = String(moreData!.raw.ada.usd.price)
-                    mcap.text = String(moreData!.raw.ada.usd.mktcap)
-                    high.text = String(moreData!.raw.ada.usd.high24Hour)
-                    low.text = String(moreData!.raw.ada.usd.low24Hour)
-                    delta.text = String(moreData!.raw.ada.usd.change24Hour)
+                    price.text = "$\(String(moreData!.raw.ada.usd.price))"
+                    mcap.text = "$\(String(moreData!.raw.ada.usd.mktcap))"
+                    high.text = "$\(String(moreData!.raw.ada.usd.high24Hour))"
+                    low.text = "$\(String(moreData!.raw.ada.usd.low24Hour))"
+                    delta.text = "$\(String(format: "%.2f",moreData!.raw.ada.usd.change24Hour))"
                     volume.text = String(moreData!.raw.ada.usd.totalvolume24Hto)
                 case "TRX":
-                    price.text = String(moreData!.raw.trx.usd.price)
-                    mcap.text = String(moreData!.raw.trx.usd.mktcap)
-                    high.text = String(moreData!.raw.trx.usd.high24Hour)
-                    low.text = String(moreData!.raw.trx.usd.low24Hour)
-                    delta.text = String(moreData!.raw.trx.usd.change24Hour)
+                    price.text = "$\(String(moreData!.raw.trx.usd.price))"
+                    mcap.text = "$\(String(moreData!.raw.trx.usd.mktcap))"
+                    high.text = "$\(String(moreData!.raw.trx.usd.high24Hour))"
+                    low.text = "$\(String(moreData!.raw.trx.usd.low24Hour))"
+                    delta.text = "$\(String(format: "%.2f",moreData!.raw.trx.usd.change24Hour))"
                     volume.text = String(moreData!.raw.trx.usd.totalvolume24Hto)
                 default:
                     break
@@ -111,67 +111,67 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         case 1:
             switch symb.text {
                 case "BTC":
-                    price.text = String(newData!.raw.btc.eur.price)
-                    mcap.text = String(newData!.raw.btc.eur.mktcap)
-                    high.text = String(newData!.raw.btc.eur.high24Hour)
-                    low.text = String(newData!.raw.btc.eur.low24Hour)
-                    delta.text = String(newData!.raw.btc.eur.change24Hour)
+                    price.text = "€\(String(newData!.raw.btc.eur.price))"
+                    mcap.text = "€\(String(newData!.raw.btc.eur.mktcap))"
+                    high.text = "€\(String(newData!.raw.btc.eur.high24Hour))"
+                    low.text = "€\(String(newData!.raw.btc.eur.low24Hour))"
+                    delta.text = "€\(String(format: "%.2f", newData!.raw.btc.eur.change24Hour))"
                     volume.text = String(newData!.raw.btc.eur.totalvolume24Hto)
                 case "LTC":
-                    price.text = String(newData!.raw.ltc.eur.price)
-                    mcap.text = String(newData!.raw.ltc.eur.mktcap)
-                    high.text = String(newData!.raw.ltc.eur.high24Hour)
-                    low.text = String(newData!.raw.ltc.eur.low24Hour)
-                    delta.text = String(newData!.raw.ltc.eur.change24Hour)
+                    price.text = "€\(String(newData!.raw.ltc.eur.price))"
+                    mcap.text = "€\(String(newData!.raw.ltc.eur.mktcap))"
+                    high.text = "€\(String(newData!.raw.ltc.eur.high24Hour))"
+                    low.text = "€\(String(newData!.raw.ltc.eur.low24Hour))"
+                    delta.text = "€\(String(format: "%.2f", newData!.raw.ltc.eur.change24Hour))"
                     volume.text = String(newData!.raw.ltc.eur.totalvolume24Hto)
                 case "ETH":
-                    price.text = String(newData!.raw.eth.eur.price)
-                    mcap.text = String(newData!.raw.eth.eur.mktcap)
-                    high.text = String(newData!.raw.eth.eur.high24Hour)
-                    low.text = String(newData!.raw.eth.eur.low24Hour)
-                    delta.text = String(newData!.raw.eth.eur.change24Hour)
+                    price.text = "€\(String(newData!.raw.eth.eur.price))"
+                    mcap.text = "€\(String(newData!.raw.eth.eur.mktcap))"
+                    high.text = "€\(String(newData!.raw.eth.eur.high24Hour))"
+                    low.text = "€\(String(newData!.raw.eth.eur.low24Hour))"
+                    delta.text = "€\(String(format: "%.2f", newData!.raw.eth.eur.change24Hour))"
                     volume.text = String(newData!.raw.eth.eur.totalvolume24Hto)
                 case "EOS":
-                    price.text = String(newData!.raw.eos.eur.price)
-                    mcap.text = String(newData!.raw.eos.eur.mktcap)
-                    high.text = String(newData!.raw.eos.eur.high24Hour)
-                    low.text = String(newData!.raw.eos.eur.low24Hour)
-                    delta.text = String(newData!.raw.eos.eur.change24Hour)
+                    price.text = "€\(String(newData!.raw.eos.eur.price))"
+                    mcap.text = "€\(String(newData!.raw.eos.eur.mktcap))"
+                    high.text = "€\(String(newData!.raw.eos.eur.high24Hour))"
+                    low.text = "€\(String(newData!.raw.eos.eur.low24Hour))"
+                    delta.text = "€\(String(format: "%.2f", newData!.raw.eos.eur.change24Hour))"
                     volume.text = String(newData!.raw.eos.eur.totalvolume24Hto)
                 case "XRP":
-                    price.text = String(newData!.raw.xrp.eur.price)
-                    mcap.text = String(newData!.raw.xrp.eur.mktcap)
-                    high.text = String(newData!.raw.xrp.eur.high24Hour)
-                    low.text = String(newData!.raw.xrp.eur.low24Hour)
-                    delta.text = String(newData!.raw.xrp.eur.change24Hour)
+                    price.text = "€\(String(newData!.raw.xrp.eur.price))"
+                    mcap.text = "€\(String(newData!.raw.xrp.eur.mktcap))"
+                    high.text = "€\(String(newData!.raw.xrp.eur.high24Hour))"
+                    low.text = "€\(String(newData!.raw.xrp.eur.low24Hour))"
+                    delta.text = "€\(String(format: "%.2f", newData!.raw.xrp.eur.change24Hour))"
                     volume.text = String(newData!.raw.xrp.eur.totalvolume24Hto)
                 case "BCH":
-                    price.text = String(moreData!.raw.bch.eur.price)
-                    mcap.text = String(moreData!.raw.bch.eur.mktcap)
-                    high.text = String(moreData!.raw.bch.eur.high24Hour)
-                    low.text = String(moreData!.raw.bch.eur.low24Hour)
-                    delta.text = String(moreData!.raw.bch.eur.change24Hour)
+                    price.text = "€\(String(moreData!.raw.bch.eur.price))"
+                    mcap.text = "€\(String(moreData!.raw.bch.eur.mktcap))"
+                    high.text = "€\(String(moreData!.raw.bch.eur.high24Hour))"
+                    low.text = "€\(String(moreData!.raw.bch.eur.low24Hour))"
+                    delta.text = "€\(String(format: "%.2f", moreData!.raw.bch.eur.change24Hour))"
                     volume.text = String(moreData!.raw.bch.eur.totalvolume24Hto)
                 case "BCN":
-                    price.text = String(moreData!.raw.bcn.eur.price)
-                    mcap.text = String(moreData!.raw.bcn.eur.mktcap)
-                    high.text = String(moreData!.raw.bcn.eur.high24Hour)
-                    low.text = String(moreData!.raw.bcn.eur.low24Hour)
-                    delta.text = String(moreData!.raw.bcn.eur.change24Hour)
+                    price.text = "€\(String(moreData!.raw.bcn.eur.price))"
+                    mcap.text = "€\(String(moreData!.raw.bcn.eur.mktcap))"
+                    high.text = "€\(String(moreData!.raw.bcn.eur.high24Hour))"
+                    low.text = "€\(String(moreData!.raw.bcn.eur.low24Hour))"
+                    delta.text = "€\(String(format: "%.2f", moreData!.raw.bcn.eur.change24Hour))"
                     volume.text = String(moreData!.raw.bcn.eur.totalvolume24Hto)
                 case "ADA":
-                    price.text = String(moreData!.raw.ada.eur.price)
-                    mcap.text = String(moreData!.raw.ada.eur.mktcap)
-                    high.text = String(moreData!.raw.ada.eur.high24Hour)
-                    low.text = String(moreData!.raw.ada.eur.low24Hour)
-                    delta.text = String(moreData!.raw.ada.eur.change24Hour)
+                    price.text = "€\(String(moreData!.raw.ada.eur.price))"
+                    mcap.text = "€\(String(moreData!.raw.ada.eur.mktcap))"
+                    high.text = "€\(String(moreData!.raw.ada.eur.high24Hour))"
+                    low.text = "€\(String(moreData!.raw.ada.eur.low24Hour))"
+                    delta.text = "€\(String(format: "%.2f", moreData!.raw.ada.eur.change24Hour))"
                     volume.text = String(moreData!.raw.ada.eur.totalvolume24Hto)
                 case "TRX":
-                    price.text = String(moreData!.raw.trx.eur.price)
-                    mcap.text = String(moreData!.raw.trx.eur.mktcap)
-                    high.text = String(moreData!.raw.trx.eur.high24Hour)
-                    low.text = String(moreData!.raw.trx.eur.low24Hour)
-                    delta.text = String(moreData!.raw.trx.eur.change24Hour)
+                    price.text = "€\(String(moreData!.raw.trx.eur.price))"
+                    mcap.text = "€\(String(moreData!.raw.trx.eur.mktcap))"
+                    high.text = "€\(String(moreData!.raw.trx.eur.high24Hour))"
+                    low.text = "€\(String(moreData!.raw.trx.eur.low24Hour))"
+                    delta.text = "€\(String(format: "%.2f", moreData!.raw.trx.eur.change24Hour))"
                     volume.text = String(moreData!.raw.trx.eur.totalvolume24Hto)
                 
                 default:
@@ -180,67 +180,68 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         case 2:
             switch symb.text {
                 case "BTC":
-                    price.text = String(newData!.raw.btc.gbp.price)
-                    mcap.text = String(newData!.raw.btc.gbp.mktcap)
-                    high.text = String(newData!.raw.btc.gbp.high24Hour)
-                    low.text = String(newData!.raw.btc.gbp.low24Hour)
-                    delta.text = String(newData!.raw.btc.gbp.change24Hour)
+                    price.text = "£\(String(newData!.raw.btc.gbp.price))"
+                    mcap.text = "£\(String(newData!.raw.btc.gbp.mktcap))"
+                    high.text = "£\(String(newData!.raw.btc.gbp.high24Hour))"
+                    low.text = "£\(String(newData!.raw.btc.gbp.low24Hour))"
+                    delta.text = "£\(String(format: "%.2f", newData!.raw.btc.gbp.change24Hour))"
                     volume.text = String(newData!.raw.btc.gbp.totalvolume24Hto)
                 case "LTC":
-                    price.text = String(newData!.raw.ltc.gbp.price)
-                    mcap.text = String(newData!.raw.ltc.gbp.mktcap)
-                    high.text = String(newData!.raw.ltc.gbp.high24Hour)
-                    low.text = String(newData!.raw.ltc.gbp.low24Hour)
-                    delta.text = String(newData!.raw.ltc.gbp.change24Hour)
+                    price.text = "£\(String(newData!.raw.ltc.gbp.price))"
+                    mcap.text = "£\(String(newData!.raw.ltc.gbp.mktcap))"
+                    high.text = "£\(String(newData!.raw.ltc.gbp.high24Hour))"
+                    low.text = "£\(String(newData!.raw.ltc.gbp.low24Hour))"
+                    delta.text = "£\(String(format: "%.2f", newData!.raw.ltc.gbp.change24Hour))"
                     volume.text = String(newData!.raw.ltc.gbp.totalvolume24Hto)
                 case "ETH":
-                    price.text = String(newData!.raw.eth.gbp.price)
-                    mcap.text = String(newData!.raw.eth.gbp.mktcap)
-                    high.text = String(newData!.raw.eth.gbp.high24Hour)
-                    low.text = String(newData!.raw.eth.gbp.low24Hour)
-                    delta.text = String(newData!.raw.eth.gbp.change24Hour)
+                    price.text = "£\(String(newData!.raw.eth.gbp.price))"
+                    mcap.text = "£\(String(newData!.raw.eth.gbp.mktcap))"
+                    high.text = "£\(String(newData!.raw.eth.gbp.high24Hour))"
+                    low.text = "£\(String(newData!.raw.eth.gbp.low24Hour))"
+                    delta.text = "£\(String(format: "%.2f", newData!.raw.eth.gbp.change24Hour))"
                     volume.text = String(newData!.raw.eth.gbp.totalvolume24Hto)
                 case "EOS":
-                    price.text = String(newData!.raw.eos.gbp.price)
-                    mcap.text = String(newData!.raw.eos.gbp.mktcap)
-                    high.text = String(newData!.raw.eos.gbp.high24Hour)
-                    low.text = String(newData!.raw.eos.gbp.low24Hour)
-                    delta.text = String(newData!.raw.eos.gbp.change24Hour)
+                    price.text = "£\(String(newData!.raw.eos.gbp.price))"
+                    mcap.text = "£\(String(newData!.raw.eos.gbp.mktcap))"
+                    high.text = "£\(String(newData!.raw.eos.gbp.high24Hour))"
+                    low.text = "£\(String(newData!.raw.eos.gbp.low24Hour))"
+                    delta.text = "£\(String(format: "%.2f", newData!.raw.eos.gbp.change24Hour))"
                     volume.text = String(newData!.raw.eos.gbp.totalvolume24Hto)
                 case "XRP":
-                    price.text = String(newData!.raw.xrp.gbp.price)
-                    mcap.text = String(newData!.raw.xrp.gbp.mktcap)
-                    high.text = String(newData!.raw.xrp.gbp.high24Hour)
-                    low.text = String(newData!.raw.xrp.gbp.low24Hour)
-                    delta.text = String(newData!.raw.xrp.gbp.change24Hour)
+                    price.text = "£\(String(newData!.raw.xrp.gbp.price))"
+                    mcap.text = "£\(String(newData!.raw.xrp.gbp.mktcap))"
+                    high.text = "£\(String(newData!.raw.xrp.gbp.high24Hour))"
+                    low.text = "£\(String(newData!.raw.xrp.gbp.low24Hour))"
+                    delta.text = "£\(String(format: "%.2f", newData!.raw.xrp.gbp.change24Hour))"
                     volume.text = String(newData!.raw.xrp.gbp.totalvolume24Hto)
                 case "BCH":
-                    price.text = String(moreData!.raw.bch.gbp.price)
-                    mcap.text = String(moreData!.raw.bch.gbp.mktcap)
-                    high.text = String(moreData!.raw.bch.gbp.high24Hour)
-                    low.text = String(moreData!.raw.bch.gbp.low24Hour)
-                    delta.text = String(moreData!.raw.bch.gbp.change24Hour)
+                    price.text = "£\(String(moreData!.raw.bch.gbp.price))"
+                    mcap.text = "£\(String(moreData!.raw.bch.gbp.mktcap))"
+                    high.text = "£\(String(moreData!.raw.bch.gbp.high24Hour))"
+                    low.text = "£\(String(moreData!.raw.bch.gbp.low24Hour))"
+                    delta.text = "£\(String(format: "%.2f", moreData!.raw.bch.gbp.change24Hour))"
                     volume.text = String(moreData!.raw.bch.gbp.totalvolume24Hto)
                 case "BCN":
-                    price.text = String(moreData!.raw.bcn.gbp.price)
-                    mcap.text = String(moreData!.raw.bcn.gbp.mktcap)
-                    high.text = String(moreData!.raw.bcn.gbp.high24Hour)
-                    low.text = String(moreData!.raw.bcn.gbp.low24Hour)
-                    delta.text = String(moreData!.raw.bcn.gbp.change24Hour)
+                    price.text = "£\(String(moreData!.raw.bcn.gbp.price))"
+                    mcap.text = "£\(String(moreData!.raw.bcn.gbp.mktcap))"
+                    high.text = "£\(String(moreData!.raw.bcn.gbp.high24Hour))"
+                    low.text = "£\(String(moreData!.raw.bcn.gbp.low24Hour))"
+                    delta.text = "£\(String(format: "%.2f", moreData!.raw.bcn.gbp.change24Hour))"
                     volume.text = String(moreData!.raw.bcn.gbp.totalvolume24Hto)
                 case "ADA":
-                    price.text = String(moreData!.raw.ada.gbp.price)
-                    mcap.text = String(moreData!.raw.ada.gbp.mktcap)
-                    high.text = String(moreData!.raw.ada.gbp.high24Hour)
-                    low.text = String(moreData!.raw.ada.gbp.low24Hour)
-                    delta.text = String(moreData!.raw.ada.gbp.change24Hour)
+                    price.text = "£\(String(moreData!.raw.ada.gbp.price))"
+                    mcap.text = "£\(String(moreData!.raw.ada.gbp.mktcap))"
+                    high.text = "£\(String(moreData!.raw.ada.gbp.high24Hour))"
+                    low.text = "£\(String(moreData!.raw.ada.gbp.low24Hour))"
+                    delta.text = "£\(String(format: "%.2f", moreData!.raw.ada.gbp.change24Hour))"
                     volume.text = String(moreData!.raw.ada.gbp.totalvolume24Hto)
+            
                 case "TRX":
-                    price.text = String(moreData!.raw.trx.gbp.price)
-                    mcap.text = String(moreData!.raw.trx.gbp.mktcap)
-                    high.text = String(moreData!.raw.trx.gbp.high24Hour)
-                    low.text = String(moreData!.raw.trx.gbp.low24Hour)
-                    delta.text = String(moreData!.raw.trx.gbp.change24Hour)
+                    price.text = "£\(String(moreData!.raw.trx.gbp.price))"
+                    mcap.text = "£\(String(moreData!.raw.trx.gbp.mktcap))"
+                    high.text = "£\(String(moreData!.raw.trx.gbp.high24Hour))"
+                    low.text = "£\(String(moreData!.raw.trx.gbp.low24Hour))"
+                    delta.text = "£\(String(format: "%.2f",moreData!.raw.trx.usd.change24Hour))"
                     volume.text = String(moreData!.raw.trx.gbp.totalvolume24Hto)
                 default:
                     break
@@ -357,75 +358,75 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         switch symbol {
         case "BTC":
-            price.text = String(newData!.raw.btc.usd.price)
-            mcap.text = String(newData!.raw.btc.usd.mktcap)
-            high.text = String(newData!.raw.btc.usd.high24Hour)
-            low.text = String(newData!.raw.btc.usd.low24Hour)
-            delta.text = String(newData!.raw.btc.usd.change24Hour)
+            price.text = "$\(String(newData!.raw.btc.usd.price))"
+            mcap.text = "$\(String(newData!.raw.btc.usd.mktcap))"
+            high.text = "$\(String(newData!.raw.btc.usd.high24Hour))"
+            low.text = "$\(String(newData!.raw.btc.usd.low24Hour))"
+            delta.text = "$\(String(format: "%.2f",newData!.raw.btc.usd.change24Hour))"
             volume.text = String(newData!.raw.btc.usd.totalvolume24Hto)
        
         case "LTC":
-            price.text = String(newData!.raw.ltc.usd.price)
-            mcap.text = String(newData!.raw.ltc.usd.mktcap)
-            high.text = String(newData!.raw.ltc.usd.high24Hour)
-            low.text = String(newData!.raw.ltc.usd.low24Hour)
-            delta.text = String(newData!.raw.ltc.usd.change24Hour)
+            price.text = "$\(String(newData!.raw.ltc.usd.price))"
+            mcap.text = "$\(String(newData!.raw.ltc.usd.mktcap))"
+            high.text = "$\(String(newData!.raw.ltc.usd.high24Hour))"
+            low.text = "$\(String(newData!.raw.ltc.usd.low24Hour))"
+            delta.text = "$\(String(format: "%.2f", newData!.raw.ltc.usd.change24Hour))"
             volume.text = String(newData!.raw.ltc.usd.totalvolume24Hto)
         
         case "EOS":
-            price.text = String(newData!.raw.eos.usd.price)
-            mcap.text = String(newData!.raw.eos.usd.mktcap)
-            high.text = String(newData!.raw.eos.usd.high24Hour)
-            low.text = String(newData!.raw.eos.usd.low24Hour)
-            delta.text = String(newData!.raw.eos.usd.change24Hour)
+            price.text = "$\(String(newData!.raw.eos.usd.price))"
+            mcap.text = "$\(String(newData!.raw.eos.usd.mktcap))"
+            high.text = "$\(String(newData!.raw.eos.usd.high24Hour))"
+            low.text = "$\(String(newData!.raw.eos.usd.low24Hour))"
+            delta.text = "$\(String(format: "%.2f",newData!.raw.eos.usd.change24Hour))"
             volume.text = String(newData!.raw.eos.usd.totalvolume24Hto)
             
         case "ETH":
-            price.text = String(newData!.raw.eth.usd.price)
-            mcap.text = String(newData!.raw.eth.usd.mktcap)
-            high.text = String(newData!.raw.eth.usd.high24Hour)
-            low.text = String(newData!.raw.eth.usd.low24Hour)
-            delta.text = String(newData!.raw.eth.usd.change24Hour)
+            price.text = "$\(String(newData!.raw.eth.usd.price))"
+            mcap.text = "$\(String(newData!.raw.eth.usd.mktcap))"
+            high.text = "$\(String(newData!.raw.eth.usd.high24Hour))"
+            low.text = "$\(String(newData!.raw.eth.usd.low24Hour))"
+            delta.text = "$\(String(format: "%.2f",newData!.raw.eth.usd.change24Hour))"
             volume.text = String(newData!.raw.eth.usd.totalvolume24Hto)
             
         case "XRP":
-            price.text = String(newData!.raw.xrp.usd.price)
-            mcap.text = String(newData!.raw.xrp.usd.mktcap)
-            high.text = String(newData!.raw.xrp.usd.high24Hour)
-            low.text = String(newData!.raw.xrp.usd.low24Hour)
-            delta.text = String(newData!.raw.xrp.usd.change24Hour)
+            price.text = "$\(String(newData!.raw.xrp.usd.price))"
+            mcap.text = "$\(String(newData!.raw.xrp.usd.mktcap))"
+            high.text = "$\(String(newData!.raw.xrp.usd.high24Hour))"
+            low.text = "$\(String(newData!.raw.xrp.usd.low24Hour))"
+            delta.text = "$\(String(format: "%.2f",newData!.raw.xrp.usd.change24Hour))"
             volume.text = String(newData!.raw.xrp.usd.totalvolume24Hto)
             
         case "BCH":
-            price.text = String(moreData!.raw.bch.usd.price)
-            mcap.text = String(moreData!.raw.bch.usd.mktcap)
-            high.text = String(moreData!.raw.bch.usd.high24Hour)
-            low.text = String(moreData!.raw.bch.usd.low24Hour)
-            delta.text = String(moreData!.raw.bch.usd.change24Hour)
+            price.text = "$\(String(moreData!.raw.bch.usd.price))"
+            mcap.text = "$\(String(moreData!.raw.bch.usd.mktcap))"
+            high.text = "$\(String(moreData!.raw.bch.usd.high24Hour))"
+            low.text = "$\(String(moreData!.raw.bch.usd.low24Hour))"
+            delta.text = "$\(String(format: "%.2f",moreData!.raw.bch.usd.change24Hour))"
             volume.text = String(moreData!.raw.bch.usd.totalvolume24Hto)
         
         case "BCN":
-            price.text = String(moreData!.raw.bcn.usd.price)
-            mcap.text = String(moreData!.raw.bcn.usd.mktcap)
-            high.text = String(moreData!.raw.bcn.usd.high24Hour)
-            low.text = String(moreData!.raw.bcn.usd.low24Hour)
-            delta.text = String(moreData!.raw.bcn.usd.change24Hour)
+            price.text = "$\(String(moreData!.raw.bcn.usd.price))"
+            mcap.text = "$\(String(moreData!.raw.bcn.usd.mktcap))"
+            high.text = "$\(String(moreData!.raw.bcn.usd.high24Hour))"
+            low.text = "$\(String(moreData!.raw.bcn.usd.low24Hour))"
+            delta.text = "$\(String(format: "%.2f",moreData!.raw.bcn.usd.change24Hour))"
             volume.text = String(moreData!.raw.bcn.usd.totalvolume24Hto)
             
         case "ADA":
-            price.text = String(moreData!.raw.ada.usd.price)
-            mcap.text = String(moreData!.raw.ada.usd.mktcap)
-            high.text = String(moreData!.raw.ada.usd.high24Hour)
-            low.text = String(moreData!.raw.ada.usd.low24Hour)
-            delta.text = String(moreData!.raw.ada.usd.change24Hour)
+            price.text = "$\(String(moreData!.raw.ada.usd.price))"
+            mcap.text = "$\(String(moreData!.raw.ada.usd.mktcap))"
+            high.text = "$\(String(moreData!.raw.ada.usd.high24Hour))"
+            low.text = "$\(String(moreData!.raw.ada.usd.low24Hour))"
+            delta.text = "$\(String(format: "%.2f",moreData!.raw.ada.usd.change24Hour))"
             volume.text = String(moreData!.raw.ada.usd.totalvolume24Hto)
             
         case "TRX":
-            price.text = String(moreData!.raw.trx.usd.price)
-            mcap.text = String(moreData!.raw.trx.usd.mktcap)
-            high.text = String(moreData!.raw.trx.usd.high24Hour)
-            low.text = String(moreData!.raw.trx.usd.low24Hour)
-            delta.text = String(moreData!.raw.trx.usd.change24Hour)
+            price.text = "$\(String(moreData!.raw.trx.usd.price))"
+            mcap.text = "$\(String(moreData!.raw.trx.usd.mktcap))"
+            high.text = "$\(String(moreData!.raw.trx.usd.high24Hour))"
+            low.text = "$\(String(moreData!.raw.trx.usd.low24Hour))"
+            delta.text = "$\(String(format: "%.2f",moreData!.raw.trx.usd.change24Hour))"
             volume.text = String(moreData!.raw.trx.usd.totalvolume24Hto)
             
         default :
