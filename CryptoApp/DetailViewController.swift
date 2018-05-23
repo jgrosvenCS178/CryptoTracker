@@ -10,8 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    /////////////////////////////////////////////////////////////////////////
-    // DECLARATIONS
+    //////////////////////////
+    // MARK: - DECLARATIONS
     /////////
     
     var getPrice = GetPrices()
@@ -36,8 +36,8 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var delta: UILabel!
     @IBOutlet weak var volume: UILabel!
  
-    /////////////////////////////////////////////////////////////////////////
-    // VIEW DID LOAD
+    ///////////////////////////
+    // MARK: -  VIEW DID LOAD
     /////////
     
     override func viewDidLoad() {
@@ -61,12 +61,12 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
     }
 
-    /////////////////////////////////////////////////////////////////////////
-    // SET DATA
+    ///////////////////////
+    // MARK: - SET DATA
     ////////
     
     func setData() -> Bool {
-        sleep(1)
+        usleep(200000)
         if let thisData = getDetail.results {
             newData = thisData
             print("data success")
@@ -135,8 +135,8 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     
-    ////////////////////////////////////////////////////////////////////
-    // PICKERVIEW
+    /////////////////////////
+    // MARK: - PICKERVIEW
     ////////
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -157,8 +157,8 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return 1
     }
     
-    //////////////////////////////////////////////////////////////////
-    // REFRESH BUTTON
+    ///////////////////////////////
+    // MARK: - REFRESH BUTTON
     /////////
     
     @IBAction func refresh(_ sender: Any) {
@@ -173,8 +173,8 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     
-    /////////////////////////////////////////////////////////////////////////
-    // SET LABELS
+    ////////////////////////////
+    // MARK: -  SET LABELS
     //////////
     
     func setLabels(_ symbol: String) {
@@ -261,8 +261,8 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     
-    /////////////////////////////////////////////////////////////////////////
-    // FIAT SEGMENTED SELECTOR
+    ////////////////////////////////
+    // MARK: -  FIAT SEGMENTED SELECTOR
     //////////
     
     @IBAction func fiat(_ sender: UISegmentedControl) {
