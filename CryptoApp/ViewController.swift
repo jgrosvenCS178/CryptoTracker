@@ -20,8 +20,8 @@ extension URL {
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
-    let names: [String] = ["BITCOIN", "LITECOIN", "ETHERIUM", "RIPPLE", "EOS", "BITCOIN CASH", "BYTECOIN"]
-    let symbols: [String] = ["BTC", "LTC", "ETH", "XRP", "EOS", "BCH", "BCN"]
+    let names: [String] = ["BITCOIN", "LITECOIN", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN", "CARDANO", "EOS"]
+    let symbols: [String] = ["BTC", "LTC", "ETH", "XRP", "BCH", "BCN", "ADA", "EOS"]
     var row: Int = 0
     var getPrice = GetPrices()
     var showCoins: [String] = []
@@ -53,6 +53,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var eosl: UILabel!
     @IBOutlet weak var bchl: UILabel!
     @IBOutlet weak var bcnl: UILabel!
+    @IBOutlet weak var adal: UILabel!
+    
+    
     
     @IBOutlet weak var btcs: UILabel!
     @IBOutlet weak var ltcs: UILabel!
@@ -61,6 +64,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var eoss: UILabel!
     @IBOutlet weak var bchc: UILabel!
     @IBOutlet weak var bcnc: UILabel!
+    @IBOutlet weak var adac: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,6 +126,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             setPrice(coin: "XRP")
             usleep(100000)
         }
+        if showCoins.contains("BCH") {
+            setPrice(coin: "BCH")
+            usleep(100000)
+        }
+        if showCoins.contains("BCN") {
+            setPrice(coin: "BCN")
+            usleep(100000)
+        }
+        if showCoins.contains("ADA") {
+            setPrice(coin: "ADA")
+            usleep(100000)
+        }
     }
     
     @IBAction func addCoin(_ sender: Any) {
@@ -151,6 +167,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     func getBCNPrice() -> Double? {
         return getPrice.searchSingle("BCN")
+    }
+    func getADAPrice() -> Double? {
+        return getPrice.searchSingle("ADA")
     }
     
     
@@ -193,6 +212,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             p = getBCNPrice()
             l = bcnc
             s = bcnl
+        
+        case "ADA":
+            p = getADAPrice()
+            l = adac
+            s = adal
             
         default:
             print("error")
@@ -211,14 +235,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 if index > 0{
                     l!.text = String(CoinData[(index)].priceUSD)
                 }
-//                if CoinData.count > 1 {
-//                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-//                        colorLabelGreen(l: l!)
-//                    }
-//                    else {
-//                        colorLabelRed(l: l!)
-//                    }
-//                }
+                if CoinData.count > 1 {
+                    if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                        colorLabelGreen(l: l!)
+                        colorLabelGreen(l: s!)
+                    }
+                    else {
+                        colorLabelRed(l: l!)
+                        colorLabelRed(l: s!)
+                    }
+                }
             }
             case "ETH":
            
@@ -227,14 +253,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     if index > 0{
                         l!.text = String(CoinData[(index)].priceUSD)
                     }
-//                    if CoinData.count > 1 {
-//                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-//                            colorLabelGreen(l: l!)
-//                        }
-//                        else {
-//                            colorLabelRed(l: l!)
-//                        }
-//                    }
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: s!)
+                        }
+                        else {
+                            colorLabelRed(l: l!)
+                            colorLabelRed(l: s!)
+                        }
+                    }
                 }
             case "LTC":
             
@@ -243,14 +271,16 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     if index > 0{
                         l!.text = String(CoinData[(index)].priceUSD)
                     }
-//                    if CoinData.count > 1 {
-//                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-//                            colorLabelGreen(l: l!)
-//                        }
-//                        else {
-//                            colorLabelRed(l: l!)
-//                        }
-//                    }
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: s!)
+                        }
+                        else {
+                            colorLabelRed(l: l!)
+                            colorLabelRed(l: s!)
+                        }
+                    }
                 }
             case "XRP":
            
@@ -259,14 +289,17 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     if index > 0{
                         l!.text = String(CoinData[(index)].priceUSD)
                     }
-//                    if CoinData.count > 1 {
-//                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-//                            colorLabelGreen(l: l!)
-//                        }
-//                        else {
-//                            colorLabelRed(l: l!)
-//                        }
-//                    }
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: s!)
+                        }
+                        else {
+                            colorLabelRed(l: l!)
+                            colorLabelRed(l: s!)
+                            
+                        }
+                    }
                 }
             case "EOS":
             
@@ -277,10 +310,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     }
                     if CoinData.count > 1 {
                         if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-//                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: s!)
                         }
                         if CoinData[(index)].priceUSD < CoinData[(index - 1)].priceUSD {
-//                            colorLabelRed(l: l!)
+                            colorLabelRed(l: l!)
+                            colorLabelRed(l: s!)
                         }
                     }
                 }
@@ -294,10 +329,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     }
                     if CoinData.count > 1 {
                         if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-//                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: s!)
                         }
                         if CoinData[(index)].priceUSD < CoinData[(index - 1)].priceUSD {
-//                            colorLabelRed(l: l!)
+                            colorLabelRed(l: l!)
+                            colorLabelRed(l: s!)
                         }
                     }
                 }
@@ -311,10 +348,30 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                     }
                     if CoinData.count > 1 {
                         if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
-//                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: s!)
                         }
                         if CoinData[(index)].priceUSD < CoinData[(index - 1)].priceUSD {
-//                            colorLabelRed(l: l!)
+                            colorLabelRed(l: l!)
+                            colorLabelRed(l: s!)
+                        }
+                    }
+                }
+            case "ADA":
+                
+                if let CoinData = coreDataHandlerETH.fetchObjectADA(){
+                    let index = CoinData.count - 1
+                    if index > 0{
+                        l!.text = String(CoinData[(index)].priceUSD)
+                    }
+                    if CoinData.count > 1 {
+                        if CoinData[(index)].priceUSD > CoinData[(index - 1)].priceUSD {
+                            colorLabelGreen(l: l!)
+                            colorLabelGreen(l: s!)
+                        }
+                        if CoinData[(index)].priceUSD < CoinData[(index - 1)].priceUSD {
+                            colorLabelRed(l: l!)
+                            colorLabelRed(l: s!)
                         }
                     }
                 }
@@ -345,14 +402,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
         }
     }
+    @IBAction func clearLest(_ sender: UIButton) {
+        let labels = [btcl, btcs, ethl, eths, xrpl, xrps, bchc, bchl, bcnc, bcnc, bcnl, eosl, eoss, adac, adal, ltcl, ltcl]
+        showCoins = []
+        for label in labels {
+            label?.text = nil
+        }
+    }
     
-//    func colorLabelGreen(l: UILabel){
-//        l.backgroundColor = UIColor(displayP3Red: 0, green: 180, blue: 0, alpha: 0.3)
-//    }
-//
-//    func colorLabelRed(l: UILabel){
-//        l.backgroundColor = UIColor(displayP3Red: 255, green: -80, blue: 40, alpha: 0.2)
-//    }
+    func colorLabelGreen(l: UILabel){
+        l.backgroundColor = UIColor(displayP3Red: 0, green: 255, blue: 0, alpha: 0.15)
+    }
+
+    func colorLabelRed(l: UILabel){
+        l.backgroundColor = UIColor(displayP3Red: 255, green: 0, blue: 0, alpha: 0.22)
+    }
     
 
 

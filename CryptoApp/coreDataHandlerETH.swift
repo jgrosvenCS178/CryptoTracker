@@ -118,5 +118,17 @@ class coreDataHandlerETH: NSObject {
         }
         
     }
+    class func fetchObjectADA() -> [ADA]? {
+        let context = getContext()
+        var info:[ADA]? = nil
+        do {
+            info = try context.fetch(ADA.fetchRequest())
+            return info
+        }catch {
+            print("fetch returned nil")
+            return info
+        }
+        
+    }
     
 }

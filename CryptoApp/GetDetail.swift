@@ -28,7 +28,7 @@ class GetDetail {
                 let jsonDecoder = JSONDecoder()
                 if let res = try? jsonDecoder.decode(Welcome.self, from: data)
                 {
-                    print(res)
+                    //print(res)
                     self.results = res
                 }
                 else {
