@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D0247A5520A9152900C162CF /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0247A5420A9152900C162CF /* HistoryTableViewController.swift */; };
+		D0338B5920B53A2000E70C1D /* PriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0338B5820B53A2000E70C1D /* PriceViewController.swift */; };
 		D03DBE9E20AFE364002485A0 /* GetMoreDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DBE9D20AFE364002485A0 /* GetMoreDetail.swift */; };
 		D076757E20ABBCFE00CEF782 /* GetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076757D20ABBCFE00CEF782 /* GetDetail.swift */; };
 		D076758020ABF90200CEF782 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076757F20ABF90200CEF782 /* DetailViewController.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		D0247A5420A9152900C162CF /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		D0338B5820B53A2000E70C1D /* PriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceViewController.swift; sourceTree = "<group>"; };
 		D03DBE9D20AFE364002485A0 /* GetMoreDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoreDetail.swift; sourceTree = "<group>"; };
 		D076757D20ABBCFE00CEF782 /* GetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDetail.swift; sourceTree = "<group>"; };
 		D076757F20ABF90200CEF782 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -113,11 +115,12 @@
 		D0B2AAB620A4117E004AC219 /* CryptoApp */ = {
 			isa = PBXGroup;
 			children = (
+				D0338B5820B53A2000E70C1D /* PriceViewController.swift */,
+				D076757F20ABF90200CEF782 /* DetailViewController.swift */,
+				D0B2AAB920A4117E004AC219 /* ViewController.swift */,
 				D076757D20ABBCFE00CEF782 /* GetDetail.swift */,
 				D03DBE9D20AFE364002485A0 /* GetMoreDetail.swift */,
-				D076757F20ABF90200CEF782 /* DetailViewController.swift */,
 				D0B2AAEC20A42102004AC219 /* getPrices.swift */,
-				D0B2AAB920A4117E004AC219 /* ViewController.swift */,
 				D0B2AABB20A4117E004AC219 /* Main.storyboard */,
 				D0247A5420A9152900C162CF /* HistoryTableViewController.swift */,
 				D0B2AAC620A41180004AC219 /* Info.plist */,
@@ -283,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0338B5920B53A2000E70C1D /* PriceViewController.swift in Sources */,
 				D076758020ABF90200CEF782 /* DetailViewController.swift in Sources */,
 				D0B2AAED20A42102004AC219 /* getPrices.swift in Sources */,
 				D0B2AAEB20A41FE9004AC219 /* coreDataHandlerETH.swift in Sources */,

@@ -58,7 +58,7 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         else {
             print("Data failure second batch")
         }
-        
+        setLabels("BTC")
     }
 
     ///////////////////////
