@@ -1,52 +1,33 @@
 //
-//  GetDetail.swift
+//  GetData3.swift
 //  CryptoApp
 //
-//  Created by Justin Grosvenor on 5/15/18.
+//  Created by Justin Grosvenor on 5/28/18.
 //  Copyright © 2018 Justin Grosvenor. All rights reserved.
 //
 
 import Foundation
-
-class GetDetail {
-    var results: Welcome?
-    func getBaseURL() -> URL{
-        return URL(string: "https://min-api.cryptocompare.com/data/pricemultifull")!
-    }
-
-    func setQueryDetail() -> Dictionary<String, String>{
-        let queryDictionary: [String : String] = ["fsyms": "BTC,LTC,ETH,XRP,EOS", "tsyms": "USD,GBP,EUR"]
-        return queryDictionary
-    }
-
-    func searchDetails() {
-        let query = setQueryDetail()
-        let newURL = getBaseURL().withQueries(query)
-        print(newURL!)
-        let task = URLSession.shared.dataTask(with: newURL!) { (data, response, error) in
+class getData3 {
+    var data3: Xlmtoxmr? = nil
+    var url = URL(string: "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=XLM,XMR,NEO,DASH,XEM&tsyms=USD,EUR,GBP")!
+    
+    func getData() {
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data {
+                
                 let jsonDecoder = JSONDecoder()
-                if let res = try? jsonDecoder.decode(Welcome.self, from: data)
-                {
-                    //print(res)
-                    self.results = res
-                }
-                else {
-                    print(error as Any)
+                if let res = try? jsonDecoder.decode(Xlmtoxmr.self, from: data){
+                    self.data3 = res
                 }
             }
         }
         task.resume()
     }
-
-
-
 }
 
-
-struct Welcome: Codable {
-    let raw: Raw
-    let display: Display
+struct Xlmtoxmr: Codable {
+    let raw: Raw3
+    let display: Display3
     
     enum CodingKeys: String, CodingKey {
         case raw = "RAW"
@@ -54,43 +35,33 @@ struct Welcome: Codable {
     }
 }
 
-struct Display: Codable {
-    let btc, ltc: DisplayBtc
-    let eth, xrp: DisplayEth
-    let eos: DisplayBtc
+struct Display3: Codable {
+    let xlm, xmr: DisplayDash
+    let neo: DisplayNeo
+    let dash: DisplayDash
+    let xem: DisplayNeo
     
     enum CodingKeys: String, CodingKey {
-        case btc = "BTC"
-        case ltc = "LTC"
-        case eth = "ETH"
-        case xrp = "XRP"
-        case eos = "EOS"
+        case xlm = "XLM"
+        case xmr = "XMR"
+        case neo = "NEO"
+        case dash = "DASH"
+        case xem = "XEM"
     }
 }
 
-struct DisplayBtc: Codable {
-    let usd, gbp, eur: [String: String]
-    
-    enum CodingKeys: String, CodingKey {
-        case usd = "USD"
-        case gbp = "GBP"
-        case eur = "EUR"
-    }
-}
-
-struct DisplayEth: Codable {
-    let usd: [String: String]
-    let gbp: PurpleGBP
-    let eur: [String: String]
+struct DisplayDash: Codable {
+    let usd, eur: [String: String]
+    let gbp: PurpleGbp
     
     enum CodingKeys: String, CodingKey {
         case usd = "USD"
-        case gbp = "GBP"
         case eur = "EUR"
+        case gbp = "GBP"
     }
 }
 
-struct PurpleGBP: Codable {
+struct PurpleGbp: Codable {
     let fromsymbol, tosymbol, market, price: String
     let lastupdate, lastvolume, lastvolumeto: String
     let lasttradeid: Int
@@ -131,105 +102,46 @@ struct PurpleGBP: Codable {
     }
 }
 
-struct Raw: Codable {
-    let btc, ltc: RawBtc
-    let eth, xrp: RawEth
-    let eos: RawBtc
-    
-    
-    enum CodingKeys: String, CodingKey {
-        case btc = "BTC"
-        case ltc = "LTC"
-        case eth = "ETH"
-        case xrp = "XRP"
-        case eos = "EOS"
-        
-    }
-}
-
-struct RawBtc: Codable {
-    let usd, gbp, eur: Eur
+struct DisplayNeo: Codable {
+    let usd: [String: String]
+    let eur, gbp: PurpleGbp
     
     enum CodingKeys: String, CodingKey {
         case usd = "USD"
-        case gbp = "GBP"
         case eur = "EUR"
+        case gbp = "GBP"
     }
 }
 
-struct Eur: Codable {
-    let type: String
-    let market: Market
-    let fromsymbol: String
-    let tosymbol: Tosymbol
-    let flags: String
-    let price: Double
-    let lastupdate: Int
-    let lastvolume, lastvolumeto: Double
-    let lasttradeid: String
-    let volumeday, volumedayto, volume24Hour, volume24Hourto: Double
-    let openday, highday, lowday, open24Hour: Double
-    let high24Hour, low24Hour: Double
-    let lastmarket: String
-    let change24Hour, changepct24Hour, changeday, changepctday: Double
-    let supply, mktcap, totalvolume24H, totalvolume24Hto: Double
+struct Raw3: Codable {
+    let xlm, xmr: RawDash
+    let neo: RawNeo
+    let dash: RawDash
+    let xem: RawNeo
     
     enum CodingKeys: String, CodingKey {
-        case type = "TYPE"
-        case market = "MARKET"
-        case fromsymbol = "FROMSYMBOL"
-        case tosymbol = "TOSYMBOL"
-        case flags = "FLAGS"
-        case price = "PRICE"
-        case lastupdate = "LASTUPDATE"
-        case lastvolume = "LASTVOLUME"
-        case lastvolumeto = "LASTVOLUMETO"
-        case lasttradeid = "LASTTRADEID"
-        case volumeday = "VOLUMEDAY"
-        case volumedayto = "VOLUMEDAYTO"
-        case volume24Hour = "VOLUME24HOUR"
-        case volume24Hourto = "VOLUME24HOURTO"
-        case openday = "OPENDAY"
-        case highday = "HIGHDAY"
-        case lowday = "LOWDAY"
-        case open24Hour = "OPEN24HOUR"
-        case high24Hour = "HIGH24HOUR"
-        case low24Hour = "LOW24HOUR"
-        case lastmarket = "LASTMARKET"
-        case change24Hour = "CHANGE24HOUR"
-        case changepct24Hour = "CHANGEPCT24HOUR"
-        case changeday = "CHANGEDAY"
-        case changepctday = "CHANGEPCTDAY"
-        case supply = "SUPPLY"
-        case mktcap = "MKTCAP"
-        case totalvolume24H = "TOTALVOLUME24H"
-        case totalvolume24Hto = "TOTALVOLUME24HTO"
+        case xlm = "XLM"
+        case xmr = "XMR"
+        case neo = "NEO"
+        case dash = "DASH"
+        case xem = "XEM"
     }
 }
 
-enum Market: String, Codable {
-    case cccagg = "CCCAGG"
-}
-
-enum Tosymbol: String, Codable {
-    case eur = "EUR"
-    case gbp = "GBP"
-    case usd = "USD"
-}
-
-struct RawEth: Codable {
-    let usd: Eur
-    let gbp: FluffyGBP
-    let eur: Eur
+struct RawDash: Codable {
+    let usd, eur: Eur
+    let gbp: FluffyGbp
     
     enum CodingKeys: String, CodingKey {
         case usd = "USD"
-        case gbp = "GBP"
         case eur = "EUR"
+        case gbp = "GBP"
     }
 }
 
-struct FluffyGBP: Codable {
+
+
+struct FluffyGbp: Codable {
     let type, market, fromsymbol, tosymbol: String
     let flags: String
     let price: Double
@@ -273,3 +185,15 @@ struct FluffyGBP: Codable {
         case totalvolume24Hto = "TOTALVOLUME24HTO"
     }
 }
+
+struct RawNeo: Codable {
+    let usd: Eur
+    let eur, gbp: FluffyGbp
+    
+    enum CodingKeys: String, CodingKey {
+        case usd = "USD"
+        case eur = "EUR"
+        case gbp = "GBP"
+    }
+}
+

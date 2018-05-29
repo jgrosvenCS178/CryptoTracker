@@ -12,8 +12,10 @@ class PriceViewController: UITableViewController {
 
     private let getDetail = GetDetail()
     private let getMore = getMoreData()
+    private let Data3 = getData3()
     private var newData: Welcome? = nil
     private var moreData: Welcome2? = nil
+    private var data3: Xlmtoxmr?
     private var dataSuccess: Bool = false
     
     // PRICES: [usd,eur,gbp]
@@ -28,14 +30,19 @@ class PriceViewController: UITableViewController {
     var bcnp: [String] = []
     var adap: [String] = []
     var trxp: [String] = []
+    var xlmp: [String] = []
+    var xmrp: [String] = []
+    var neop: [String] = []
+    var dashp: [String] = []
+    var xemp: [String] = []
     // [0=usd,1=eur,2=gbp]
     var fiat: Int = 0
     
     
     // 1=bitcoin 2=litecoin 3=EOS 4=ETH 5=XRP 6=BCH 7=BCN
-    let logos: [UIImage] = [#imageLiteral(resourceName: "btc"),#imageLiteral(resourceName: "ltc"),#imageLiteral(resourceName: "eos"),#imageLiteral(resourceName: "eth"),#imageLiteral(resourceName: "xrp"),#imageLiteral(resourceName: "bch"),#imageLiteral(resourceName: "bcn"),#imageLiteral(resourceName: "ada"),#imageLiteral(resourceName: "trx")]
-    let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN", "ADA", "TRX"]
-    let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN", "CARDANO", "TRON"]
+    let logos: [UIImage] = [#imageLiteral(resourceName: "btc"),#imageLiteral(resourceName: "ltc"),#imageLiteral(resourceName: "eos"),#imageLiteral(resourceName: "eth"),#imageLiteral(resourceName: "xrp"),#imageLiteral(resourceName: "bch"),#imageLiteral(resourceName: "bcn"),#imageLiteral(resourceName: "ada"),#imageLiteral(resourceName: "trx"),#imageLiteral(resourceName: "xlm"),#imageLiteral(resourceName: "xmr"),#imageLiteral(resourceName: "neo"),#imageLiteral(resourceName: "dash"),#imageLiteral(resourceName: "xem")]
+    let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN", "ADA", "TRX", "XLM", "XMR", "NEO", "DASH", "XEM"]
+    let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN", "CARDANO", "TRON", "STELLAR", "MONERO", "NEO", "DASH", "NEM"]
     
  
     ///////////////////////////
@@ -46,13 +53,13 @@ class PriceViewController: UITableViewController {
     func requestData() -> Bool {
         getDetail.searchDetails()
         getMore.getData()
+        Data3.getData()
         usleep(300000)
         if let thisData = getDetail.results {
             newData = thisData
             print("data success first first")
             if setMoreData(){
                 dataSuccess = true
-                makePriceList()
             }
             return dataSuccess
         }
@@ -63,7 +70,6 @@ class PriceViewController: UITableViewController {
                 print("data success second try")
                 if setMoreData(){
                     dataSuccess = true
-                    makePriceList()
                 }
                 dataSuccess = true
                 return dataSuccess
@@ -76,7 +82,6 @@ class PriceViewController: UITableViewController {
                     print("data success third try")
                     if setMoreData(){
                         dataSuccess = true
-                        makePriceList()
                     }
                     return dataSuccess
                 }
@@ -94,18 +99,20 @@ class PriceViewController: UITableViewController {
         usleep(200000)
         if let thisMoreData = getMore.datas {
             moreData = thisMoreData
-            dataSuccess = true
             print("more data success second dump")
-            checkData()
+            if setData3(){
+                dataSuccess = true
+            }
             return dataSuccess
         }
         else {
             usleep(1500000)
             if let thisMoreData = getMore.datas {
                 moreData = thisMoreData
-                dataSuccess = true
                 print("data success second try second dump")
-                checkData()
+                if setData3(){
+                    dataSuccess = true
+                }
                 return dataSuccess
             }
             else {
@@ -113,13 +120,51 @@ class PriceViewController: UITableViewController {
                 sleep(4)
                 if let thisMoreData = getMore.datas {
                     moreData = thisMoreData
-                    dataSuccess = true
                     print("data success third try second dump")
+                    if setData3(){
+                        dataSuccess = true
+                    }
+                    return dataSuccess
+                }
+                else {
+                    print("Data3 Failure")
+                    dataSuccess = false
+                    return dataSuccess
+                }
+            }
+        }
+        
+    }
+    func setData3() -> Bool {
+        usleep(200000)
+        if let thisData3 = Data3.data3 {
+            data3 = thisData3
+            dataSuccess = true
+            print("more data3 success second dump")
+            checkData()
+            return dataSuccess
+        }
+        else {
+            usleep(1500000)
+            if let thisData3 = Data3.data3 {
+                data3 = thisData3
+                dataSuccess = true
+                print("data3 success second try second dump")
+                checkData()
+                return dataSuccess
+            }
+            else {
+                print("inner fail3")
+                sleep(4)
+                if let thisData3 = Data3.data3 {
+                    data3 = thisData3
+                    dataSuccess = true
+                    print("data3 success third try second dump")
                     checkData()
                     return dataSuccess
                 }
                 else {
-                    print("Data Failure second dump")
+                    print("Data3 Failure second dump")
                     dataSuccess = false
                     return dataSuccess
                 }
@@ -134,6 +179,7 @@ class PriceViewController: UITableViewController {
     func checkData(){
         if dataSuccess{
             refreshController.endRefreshing()
+            makePriceList()
             //print(prices)
             self.tableView.reloadData()
             //print("checkdata executed")
@@ -163,6 +209,7 @@ class PriceViewController: UITableViewController {
         tableView.refreshControl = refreshController
         if requestData() {
             print("data success prices")
+            print(prices)
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -242,6 +289,11 @@ class PriceViewController: UITableViewController {
         bcnp = getBCNP()
         adap = getADAP()
         trxp = getTRXP()
+        xlmp = getXLMP()
+        xmrp = getXMRP()
+        neop = getNEOP()
+        dashp = getDASHP()
+        xemp = getXEMP()
         prices.append(btcp)
         prices.append(ltcp)
         prices.append(eosp)
@@ -251,6 +303,11 @@ class PriceViewController: UITableViewController {
         prices.append(bcnp)
         prices.append(adap)
         prices.append(trxp)
+        prices.append(xlmp)
+        prices.append(xmrp)
+        prices.append(neop)
+        prices.append(dashp)
+        prices.append(xemp)
     }
     
     func getBTCP() -> [String] {
@@ -344,6 +401,55 @@ class PriceViewController: UITableViewController {
         return prices
     }
     
+    func getXLMP() -> [String] {
+        var prices: [String] = []
+        if let data3 = data3 {
+            prices.append("$\(data3.raw.xlm.usd.price)")
+            prices.append("€\(data3.raw.xlm.eur.price)")
+            prices.append("£\(data3.raw.xlm.gbp.price)")
+        }
+        return prices
+    }
+    
+    func getXMRP() -> [String] {
+        var prices: [String] = []
+        if let data3 = data3 {
+            prices.append("$\(data3.raw.xmr.usd.price)")
+            prices.append("€\(data3.raw.xmr.eur.price)")
+            prices.append("£\(data3.raw.xmr.gbp.price)")
+        }
+        return prices
+    }
+    
+    func getNEOP() -> [String] {
+        var prices: [String] = []
+        if let data3 = data3 {
+            prices.append("$\(data3.raw.neo.usd.price)")
+            prices.append("€\(data3.raw.neo.eur.price)")
+            prices.append("£\(data3.raw.neo.gbp.price)")
+        }
+        return prices
+    }
+    
+    func getDASHP() -> [String] {
+        var prices: [String] = []
+        if let data3 = data3 {
+            prices.append("$\(data3.raw.dash.usd.price)")
+            prices.append("€\(data3.raw.dash.eur.price)")
+            prices.append("£\(data3.raw.dash.gbp.price)")
+        }
+        return prices
+    }
+    
+    func getXEMP() -> [String] {
+        var prices: [String] = []
+        if let data3 = data3 {
+            prices.append("$\(data3.raw.xem.usd.price)")
+            prices.append("€\(data3.raw.xem.eur.price)")
+            prices.append("£\(data3.raw.xem.gbp.price)")
+        }
+        return prices
+    }
     
     
     
