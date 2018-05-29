@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D0247A5520A9152900C162CF /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0247A5420A9152900C162CF /* HistoryTableViewController.swift */; };
 		D02ABE1D20BD0E0C009ECCF6 /* GetData3.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02ABE1C20BD0E0C009ECCF6 /* GetData3.swift */; };
+		D02ABE1F20BDD9FD009ECCF6 /* Coins.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02ABE1E20BDD9FD009ECCF6 /* Coins.swift */; };
 		D0338B5920B53A2000E70C1D /* PriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0338B5820B53A2000E70C1D /* PriceViewController.swift */; };
 		D03DBE9E20AFE364002485A0 /* GetMoreDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DBE9D20AFE364002485A0 /* GetMoreDetail.swift */; };
 		D076757E20ABBCFE00CEF782 /* GetDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D076757D20ABBCFE00CEF782 /* GetDetail.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		D0247A5420A9152900C162CF /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		D02ABE1C20BD0E0C009ECCF6 /* GetData3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetData3.swift; sourceTree = "<group>"; };
+		D02ABE1E20BDD9FD009ECCF6 /* Coins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coins.swift; sourceTree = "<group>"; };
 		D0338B5820B53A2000E70C1D /* PriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceViewController.swift; sourceTree = "<group>"; };
 		D03DBE9D20AFE364002485A0 /* GetMoreDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoreDetail.swift; sourceTree = "<group>"; };
 		D076757D20ABBCFE00CEF782 /* GetDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDetail.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				D0338B5820B53A2000E70C1D /* PriceViewController.swift */,
 				D076757F20ABF90200CEF782 /* DetailViewController.swift */,
+				D02ABE1E20BDD9FD009ECCF6 /* Coins.swift */,
 				D0B2AAB920A4117E004AC219 /* ViewController.swift */,
 				D076757D20ABBCFE00CEF782 /* GetDetail.swift */,
 				D03DBE9D20AFE364002485A0 /* GetMoreDetail.swift */,
@@ -293,6 +296,7 @@
 				D076758020ABF90200CEF782 /* DetailViewController.swift in Sources */,
 				D02ABE1D20BD0E0C009ECCF6 /* GetData3.swift in Sources */,
 				D0B2AAED20A42102004AC219 /* getPrices.swift in Sources */,
+				D02ABE1F20BDD9FD009ECCF6 /* Coins.swift in Sources */,
 				D0B2AAEB20A41FE9004AC219 /* coreDataHandlerETH.swift in Sources */,
 				D0B2AABA20A4117E004AC219 /* ViewController.swift in Sources */,
 				D03DBE9E20AFE364002485A0 /* GetMoreDetail.swift in Sources */,

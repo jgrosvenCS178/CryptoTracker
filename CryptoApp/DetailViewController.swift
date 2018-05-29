@@ -17,14 +17,16 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var getPrice = GetPrices()
     private let getDetail = GetDetail()
     private let getMore = getMoreData()
+    private let Data3 = getData3()
     private var newData: Welcome? = nil
     private var moreData: Welcome2? = nil
+    private var data3: Xlmtoxmr?
     private var dataSuccess: Bool = false
     
     // 1=bitcoin 2=litecoin 3=EOS 4=ETH 5=XRP 6=BCH 7=BCN
-    let logos: [UIImage] = [#imageLiteral(resourceName: "btc"),#imageLiteral(resourceName: "ltc"),#imageLiteral(resourceName: "eos"),#imageLiteral(resourceName: "eth"),#imageLiteral(resourceName: "xrp"),#imageLiteral(resourceName: "bch"),#imageLiteral(resourceName: "bcn"),#imageLiteral(resourceName: "ada"),#imageLiteral(resourceName: "trx")]
-    let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN", "ADA", "TRX"]
-    let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN", "CARDANO", "TRON"]
+    let logos: [UIImage] = [#imageLiteral(resourceName: "btc"),#imageLiteral(resourceName: "ltc"),#imageLiteral(resourceName: "eos"),#imageLiteral(resourceName: "eth"),#imageLiteral(resourceName: "xrp"),#imageLiteral(resourceName: "bch"),#imageLiteral(resourceName: "bcn"),#imageLiteral(resourceName: "ada"),#imageLiteral(resourceName: "trx"),#imageLiteral(resourceName: "xlm"),#imageLiteral(resourceName: "xmr"),#imageLiteral(resourceName: "neo"),#imageLiteral(resourceName: "dash"),#imageLiteral(resourceName: "xem")]
+    let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN", "ADA", "TRX", "XLM", "XMR", "NEO", "DASH", "XEM"]
+    let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN", "CARDANO", "TRON", "STELLAR", "MONERO", "NEO", "DASH", "NEM"]
     
     @IBOutlet weak var fiatController: UISegmentedControl!
     @IBOutlet weak var logo: UIImageView!

@@ -10,6 +10,7 @@ import UIKit
 
 class PriceViewController: UITableViewController {
 
+    private let coinList = CoinList()
     private let getDetail = GetDetail()
     private let getMore = getMoreData()
     private let Data3 = getData3()
@@ -18,33 +19,6 @@ class PriceViewController: UITableViewController {
     private var data3: Xlmtoxmr?
     private var dataSuccess: Bool = false
     
-    // PRICES: [usd,eur,gbp]
-    var prices: [[String]] = []
-    
-    var btcp: [String] = []
-    var ltcp: [String] = []
-    var ethp: [String] = []
-    var eosp: [String] = []
-    var xrpp: [String] = []
-    var bchp: [String] = []
-    var bcnp: [String] = []
-    var adap: [String] = []
-    var trxp: [String] = []
-    var xlmp: [String] = []
-    var xmrp: [String] = []
-    var neop: [String] = []
-    var dashp: [String] = []
-    var xemp: [String] = []
-    // [0=usd,1=eur,2=gbp]
-    var fiat: Int = 0
-    
-    
-    // 1=bitcoin 2=litecoin 3=EOS 4=ETH 5=XRP 6=BCH 7=BCN
-    let logos: [UIImage] = [#imageLiteral(resourceName: "btc"),#imageLiteral(resourceName: "ltc"),#imageLiteral(resourceName: "eos"),#imageLiteral(resourceName: "eth"),#imageLiteral(resourceName: "xrp"),#imageLiteral(resourceName: "bch"),#imageLiteral(resourceName: "bcn"),#imageLiteral(resourceName: "ada"),#imageLiteral(resourceName: "trx"),#imageLiteral(resourceName: "xlm"),#imageLiteral(resourceName: "xmr"),#imageLiteral(resourceName: "neo"),#imageLiteral(resourceName: "dash"),#imageLiteral(resourceName: "xem")]
-    let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN", "ADA", "TRX", "XLM", "XMR", "NEO", "DASH", "XEM"]
-    let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN", "CARDANO", "TRON", "STELLAR", "MONERO", "NEO", "DASH", "NEM"]
-    
- 
     ///////////////////////////
     // MARK: -  GET DATA
     /////////
@@ -136,7 +110,6 @@ class PriceViewController: UITableViewController {
         
     }
     func setData3() -> Bool {
-        usleep(200000)
         if let thisData3 = Data3.data3 {
             data3 = thisData3
             dataSuccess = true
@@ -209,7 +182,7 @@ class PriceViewController: UITableViewController {
         tableView.refreshControl = refreshController
         if requestData() {
             print("data success prices")
-            print(prices)
+            print(coinList.prices)
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -224,17 +197,17 @@ class PriceViewController: UITableViewController {
     @IBAction func fiatControl(_ sender: Any) {
         switch (sender as AnyObject).selectedSegmentIndex {
         case 0:
-            fiat = 0
+            coinList.fiat = 0
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         case 1:
-            fiat = 1
+            coinList.fiat = 1
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         case 2:
-            fiat = 2
+            coinList.fiat = 2
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -257,18 +230,18 @@ class PriceViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return prices.count
+        return coinList.prices.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "coinPrice", for: indexPath)
         
-        if prices[indexPath.row].count > 0 {
-            let price = prices[indexPath.row][fiat]
-            cell.textLabel?.text = names[indexPath.row]
+        if coinList.prices[indexPath.row].count > 0 {
+            let price = coinList.prices[indexPath.row][coinList.fiat]
+            cell.textLabel?.text = coinList.names[indexPath.row]
             cell.detailTextLabel?.text = price
-            cell.imageView?.image = logos[indexPath.row]
+            cell.imageView?.image = coinList.logos[indexPath.row]
         }
         else {
             print("index error in prices")
@@ -279,35 +252,35 @@ class PriceViewController: UITableViewController {
     }
     
     func makePriceList() {
-        prices = []
-        btcp = getBTCP()
-        ltcp = getLTCP()
-        eosp = getEOSP()
-        ethp = getETHP()
-        xrpp = getXRPP()
-        bchp = getBCHP()
-        bcnp = getBCNP()
-        adap = getADAP()
-        trxp = getTRXP()
-        xlmp = getXLMP()
-        xmrp = getXMRP()
-        neop = getNEOP()
-        dashp = getDASHP()
-        xemp = getXEMP()
-        prices.append(btcp)
-        prices.append(ltcp)
-        prices.append(eosp)
-        prices.append(ethp)
-        prices.append(xrpp)
-        prices.append(bchp)
-        prices.append(bcnp)
-        prices.append(adap)
-        prices.append(trxp)
-        prices.append(xlmp)
-        prices.append(xmrp)
-        prices.append(neop)
-        prices.append(dashp)
-        prices.append(xemp)
+        coinList.prices = []
+        coinList.btcp = getBTCP()
+        coinList.ltcp = getLTCP()
+        coinList.eosp = getEOSP()
+        coinList.ethp = getETHP()
+        coinList.xrpp = getXRPP()
+        coinList.bchp = getBCHP()
+        coinList.bcnp = getBCNP()
+        coinList.adap = getADAP()
+        coinList.trxp = getTRXP()
+        coinList.xlmp = getXLMP()
+        coinList.xmrp = getXMRP()
+        coinList.neop = getNEOP()
+        coinList.dashp = getDASHP()
+        coinList.xemp = getXEMP()
+        coinList.prices.append(coinList.btcp)
+        coinList.prices.append(coinList.ltcp)
+        coinList.prices.append(coinList.eosp)
+        coinList.prices.append(coinList.ethp)
+        coinList.prices.append(coinList.xrpp)
+        coinList.prices.append(coinList.bchp)
+        coinList.prices.append(coinList.bcnp)
+        coinList.prices.append(coinList.adap)
+        coinList.prices.append(coinList.trxp)
+        coinList.prices.append(coinList.xlmp)
+        coinList.prices.append(coinList.xmrp)
+        coinList.prices.append(coinList.neop)
+        coinList.prices.append(coinList.dashp)
+        coinList.prices.append(coinList.xemp)
     }
     
     func getBTCP() -> [String] {
