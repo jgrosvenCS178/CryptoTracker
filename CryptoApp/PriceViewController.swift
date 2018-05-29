@@ -37,7 +37,11 @@ class PriceViewController: UITableViewController {
     let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN", "ADA", "TRX"]
     let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN", "CARDANO", "TRON"]
     
-    
+ 
+    ///////////////////////////
+    // MARK: -  GET DATA
+    /////////
+
     @objc
     func requestData() -> Bool {
         getDetail.searchDetails()
@@ -87,7 +91,7 @@ class PriceViewController: UITableViewController {
     }
     
     func setMoreData() -> Bool {
-        usleep(300000)
+        usleep(200000)
         if let thisMoreData = getMore.datas {
             moreData = thisMoreData
             dataSuccess = true
@@ -124,42 +128,19 @@ class PriceViewController: UITableViewController {
         
     }
     
-    
+    ///////////////////////////
+    // MARK: -  CHECKDATA
+    /////////
     func checkData(){
         if dataSuccess{
             refreshController.endRefreshing()
-            print(prices)
+            //print(prices)
             self.tableView.reloadData()
-            print("checkdata executed")
+            //print("checkdata executed")
         }
     }
     
-    ///////////////////////////
-    // MARK: -  GET DATA
-    /////////
-    
-    
-//    func requestData() {
-//        getDetail.searchDetails()
-//        sleep(2)
-//        getMore.getData()
-//        sleep(2)
-//        newData = getDetail.results
-//        moreData = getMore.datas
-//        if let newData = newData{
-//            if let moreData = moreData {
-//                makePriceList()
-//            }
-//        }
-//        else {
-//            print("error")
-//        }
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//        }
-//        refreshController.endRefreshing()
-//    }
-    
+
     
     ///////////////////////////
     // MARK: -  REFRESH CONTROLLER
@@ -178,27 +159,47 @@ class PriceViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         // Pull Down Refresh
         tableView.refreshControl = refreshController
         if requestData() {
-            print("data success first batch")
+            print("data success prices")
         }
-        if setMoreData() {
-            makePriceList()
-            print("data success second batch")
-            
-        }
-        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-        
-   
     }
 
- 
+    ///////////////////////////
+    // MARK: -  FIAT CONTROLLER
+    /////////
+    
+    @IBOutlet weak var fiatController: UISegmentedControl!
+    @IBAction func fiatControl(_ sender: Any) {
+        switch (sender as AnyObject).selectedSegmentIndex {
+        case 0:
+            fiat = 0
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        case 1:
+            fiat = 1
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        case 2:
+            fiat = 2
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        default:
+            break
+        }
+        
+    }
+    
+    
+    
+    
 
     // MARK: - Table view data source
 
@@ -253,21 +254,21 @@ class PriceViewController: UITableViewController {
     }
     
     func getBTCP() -> [String] {
-        var newPrices: [String] = []
+        var prices: [String] = []
         if let newData = newData {
-            newPrices.append(String("$\(newData.raw.btc.usd.price)"))
-            newPrices.append(String("$\(newData.raw.btc.eur.price)"))
-            newPrices.append(String("$\(newData.raw.btc.gbp.price)"))
+            prices.append("$\(newData.raw.btc.usd.price)")
+            prices.append("€\(newData.raw.btc.eur.price)")
+            prices.append("£\(newData.raw.btc.gbp.price)")
         }
-        return newPrices
+        return prices
     }
     
     func getLTCP() -> [String] {
         var prices: [String] = []
         if let newData = newData {
-            prices.append(String("$\(newData.raw.ltc.usd.price)"))
-            prices.append(String("$\(newData.raw.ltc.eur.price)"))
-            prices.append(String("$\(newData.raw.ltc.gbp.price)"))
+            prices.append("$\(newData.raw.ltc.usd.price)")
+            prices.append("€\(newData.raw.ltc.eur.price)")
+            prices.append("£\(newData.raw.ltc.gbp.price)")
         }
         return prices
     }
@@ -276,9 +277,9 @@ class PriceViewController: UITableViewController {
     func getETHP() -> [String] {
         var prices: [String] = []
         if let newData = newData {
-            prices.append(String("$\(newData.raw.eth.usd.price)"))
-            prices.append(String(newData.raw.eth.eur.price))
-            prices.append(String(newData.raw.eth.gbp.price))
+            prices.append("$\(newData.raw.eth.usd.price)")
+            prices.append("€\(newData.raw.eth.eur.price)")
+            prices.append("£\(newData.raw.eth.gbp.price)")
         }
         return prices
     }
@@ -286,9 +287,9 @@ class PriceViewController: UITableViewController {
     func getEOSP() -> [String] {
         var prices: [String] = []
         if let newData = newData {
-            prices.append(String("$\(newData.raw.eos.usd.price)"))
-            prices.append(String(newData.raw.eos.eur.price))
-            prices.append(String(newData.raw.eos.gbp.price))
+            prices.append("$\(newData.raw.eos.usd.price)")
+            prices.append("€\(newData.raw.eos.eur.price)")
+            prices.append("£\(newData.raw.eos.gbp.price)")
         }
         return prices
     }
@@ -296,9 +297,9 @@ class PriceViewController: UITableViewController {
     func getXRPP() -> [String] {
         var prices: [String] = []
         if let newData = newData {
-            prices.append(String("$\(newData.raw.xrp.usd.price)"))
-            prices.append(String(newData.raw.xrp.eur.price))
-            prices.append(String(newData.raw.xrp.gbp.price))
+            prices.append("$\(newData.raw.xrp.usd.price)")
+            prices.append("€\(newData.raw.xrp.eur.price)")
+            prices.append("£\(newData.raw.xrp.gbp.price)")
         }
         return prices
     }
@@ -306,9 +307,9 @@ class PriceViewController: UITableViewController {
     func getBCHP() -> [String] {
         var prices: [String] = []
         if let moreData = moreData {
-            prices.append(String("$\(moreData.raw.bch.usd.price)"))
-            prices.append(String(moreData.raw.bch.eur.price))
-            prices.append(String(moreData.raw.bch.gbp.price))
+            prices.append("$\(moreData.raw.bch.usd.price)")
+            prices.append("€\(moreData.raw.bch.eur.price)")
+            prices.append("£\(moreData.raw.bch.gbp.price)")
         }
         return prices
     }
@@ -316,9 +317,9 @@ class PriceViewController: UITableViewController {
     func getBCNP() -> [String] {
         var prices: [String] = []
         if let moreData = moreData {
-            prices.append(String("$\(moreData.raw.bcn.usd.price)"))
-            prices.append(String(moreData.raw.bcn.eur.price))
-            prices.append(String(moreData.raw.bcn.gbp.price))
+            prices.append("$\(moreData.raw.bcn.usd.price)")
+            prices.append("€\(moreData.raw.bcn.eur.price)")
+            prices.append("£\(moreData.raw.bcn.gbp.price)")
         }
         return prices
     }
@@ -326,9 +327,9 @@ class PriceViewController: UITableViewController {
     func getADAP() -> [String] {
         var prices: [String] = []
         if let moreData = moreData {
-            prices.append(String("$\(moreData.raw.ada.usd.price)"))
-            prices.append(String(moreData.raw.ada.eur.price))
-            prices.append(String(moreData.raw.ada.gbp.price))
+            prices.append("$\(moreData.raw.ada.usd.price)")
+            prices.append("€\(moreData.raw.ada.eur.price)")
+            prices.append("£\(moreData.raw.ada.gbp.price)")
         }
         return prices
     }
@@ -337,8 +338,8 @@ class PriceViewController: UITableViewController {
         var prices: [String] = []
         if let moreData = moreData {
             prices.append("$\(moreData.raw.trx.usd.price)")
-            prices.append(String(moreData.raw.trx.eur.price))
-            prices.append(String(moreData.raw.trx.gbp.price))
+            prices.append("€\(moreData.raw.trx.eur.price)")
+            prices.append("£\(moreData.raw.trx.gbp.price)")
         }
         return prices
     }
