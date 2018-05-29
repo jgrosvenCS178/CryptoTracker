@@ -14,19 +14,16 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     // MARK: - DECLARATIONS
     /////////
     
-    var getPrice = GetPrices()
+    private let coinList = CoinList()
+    private let getPrice = GetPrices()
     private let getDetail = GetDetail()
     private let getMore = getMoreData()
     private let Data3 = getData3()
     private var newData: Welcome? = nil
     private var moreData: Welcome2? = nil
-    private var data3: Xlmtoxmr?
+    private var data3: Xlmtoxmr? = nil
     private var dataSuccess: Bool = false
     
-    // 1=bitcoin 2=litecoin 3=EOS 4=ETH 5=XRP 6=BCH 7=BCN
-    let logos: [UIImage] = [#imageLiteral(resourceName: "btc"),#imageLiteral(resourceName: "ltc"),#imageLiteral(resourceName: "eos"),#imageLiteral(resourceName: "eth"),#imageLiteral(resourceName: "xrp"),#imageLiteral(resourceName: "bch"),#imageLiteral(resourceName: "bcn"),#imageLiteral(resourceName: "ada"),#imageLiteral(resourceName: "trx"),#imageLiteral(resourceName: "xlm"),#imageLiteral(resourceName: "xmr"),#imageLiteral(resourceName: "neo"),#imageLiteral(resourceName: "dash"),#imageLiteral(resourceName: "xem")]
-    let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN", "ADA", "TRX", "XLM", "XMR", "NEO", "DASH", "XEM"]
-    let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN", "CARDANO", "TRON", "STELLAR", "MONERO", "NEO", "DASH", "NEM"]
     
     @IBOutlet weak var fiatController: UISegmentedControl!
     @IBOutlet weak var logo: UIImageView!
@@ -44,21 +41,28 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        logo.image = logos[0]
+        logo.image = coinList.logos[0]
         getDetail.searchDetails()
         if setData(){
             setLabels("BTC")
-            print("Data success first batch")
+            print("Data1 success")
         }
         else {
-            print("Data failure first batch")
+            print("Data1 failure")
         }
         getMore.getData()
         if setMoreData(){
-            print("Data success second batch")
+            print("Data2 success")
         }
         else {
-            print("Data failure second batch")
+            print("Data2 failure")
+        }
+        Data3.getData()
+        if setData3(){
+            print("Data3 success")
+        }
+        else {
+            print("Data3 failure")
         }
         setLabels("BTC")
     }
@@ -135,6 +139,39 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     
+    func setData3() -> Bool {
+        if let thisData3 = Data3.data3 {
+            data3 = thisData3
+            dataSuccess = true
+            print("more data3 success second dump")
+            return dataSuccess
+        }
+        else {
+            usleep(1500000)
+            if let thisData3 = Data3.data3 {
+                data3 = thisData3
+                dataSuccess = true
+                print("data3 success second try second dump")
+                return dataSuccess
+            }
+            else {
+                print("inner fail3")
+                sleep(4)
+                if let thisData3 = Data3.data3 {
+                    data3 = thisData3
+                    dataSuccess = true
+                    print("data3 success third try second dump")
+                    return dataSuccess
+                }
+                else {
+                    print("Data3 Failure second dump")
+                    dataSuccess = false
+                    return dataSuccess
+                }
+            }
+        }
+        
+    }
     
     
     /////////////////////////
@@ -142,17 +179,17 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     ////////
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        logo.image = logos[row]
-        setLabels(symbols[row])
+        logo.image = coinList.logos[row]
+        setLabels(coinList.symbols[row])
         fiatController.selectedSegmentIndex = 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return names[row]
+        return coinList.names[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return symbols.count
+        return coinList.symbols.count
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

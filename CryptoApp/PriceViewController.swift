@@ -16,7 +16,7 @@ class PriceViewController: UITableViewController {
     private let Data3 = getData3()
     private var newData: Welcome? = nil
     private var moreData: Welcome2? = nil
-    private var data3: Xlmtoxmr?
+    private var data3: Xlmtoxmr? = nil
     private var dataSuccess: Bool = false
     
     ///////////////////////////

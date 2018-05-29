@@ -38,8 +38,10 @@ struct Xlmtoxmr: Codable {
 }
 
 struct Display3: Codable {
-    let xlm, xmr, neo, dash: DisplayDash
-    let xem: DisplayXem
+    let xlm, xmr: DisplayDash
+    let neo: DisplayNeo
+    let dash: DisplayDash
+    let xem: DisplayNeo
     
     enum CodingKeys: String, CodingKey {
         case xlm = "XLM"
@@ -102,7 +104,7 @@ struct PurpleGbp: Codable {
     }
 }
 
-struct DisplayXem: Codable {
+struct DisplayNeo: Codable {
     let usd: [String: String]
     let eur, gbp: PurpleGbp
     
@@ -114,8 +116,10 @@ struct DisplayXem: Codable {
 }
 
 struct Raw3: Codable {
-    let xlm, xmr, neo, dash: RawDash
-    let xem: RawXem
+    let xlm, xmr: RawDash
+    let neo: RawNeo
+    let dash: RawDash
+    let xem: RawNeo
     
     enum CodingKeys: String, CodingKey {
         case xlm = "XLM"
@@ -229,8 +233,8 @@ struct FluffyGbp: Codable {
     }
 }
 
-struct RawXem: Codable {
-    let usd: Eur
+struct RawNeo: Codable {
+    let usd: Eur3
     let eur, gbp: FluffyGbp
     
     enum CodingKeys: String, CodingKey {
