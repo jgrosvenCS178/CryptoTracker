@@ -66,7 +66,7 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     ////////
     
     func setData() -> Bool {
-        usleep(200000)
+        usleep(300000)
         if let thisData = getDetail.results {
             newData = thisData
             print("data success")
@@ -93,14 +93,14 @@ class DetailViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 else {
                     print("Data Failure")
                     dataSuccess = false
-                    return false
+                    return dataSuccess
                 }
             }
         }
     }
     
     func setMoreData() -> Bool {
-        sleep(1)
+        usleep(300000)
         if let thisMoreData = getMore.datas {
             moreData = thisMoreData
             print("more data success second dump")

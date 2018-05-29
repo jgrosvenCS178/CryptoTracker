@@ -9,12 +9,16 @@
 import UIKit
 
 class PriceViewController: UITableViewController {
-    
+
     private let getDetail = GetDetail()
     private let getMore = getMoreData()
     private var newData: Welcome? = nil
     private var moreData: Welcome2? = nil
     private var dataSuccess: Bool = false
+    
+    // PRICES: [usd,eur,gbp]
+    var prices: [[String]] = []
+    
     var btcp: [String] = []
     var ltcp: [String] = []
     var ethp: [String] = []
@@ -24,6 +28,7 @@ class PriceViewController: UITableViewController {
     var bcnp: [String] = []
     var adap: [String] = []
     var trxp: [String] = []
+    // [0=usd,1=eur,2=gbp]
     var fiat: Int = 0
     
     
@@ -32,41 +37,168 @@ class PriceViewController: UITableViewController {
     let symbols: [String] = ["BTC", "LTC", "EOS", "ETH", "XRP", "BCH", "BCN", "ADA", "TRX"]
     let names: [String] = ["BITCOIN", "LITECOIN", "EOS", "ETHERIUM", "RIPPLE", "BITCOIN CASH", "BYTECOIN", "CARDANO", "TRON"]
     
-    var prices: [[String]] = []
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    @objc
+    func requestData() -> Bool {
         getDetail.searchDetails()
-        sleep(2)
         getMore.getData()
-        sleep(2)
-        
-        newData = getDetail.results
-        moreData = getMore.datas
-        
-        if let newData = newData {
-            makePriceList()
+        usleep(300000)
+        if let thisData = getDetail.results {
+            newData = thisData
+            print("data success first first")
+            if setMoreData(){
+                dataSuccess = true
+                makePriceList()
+            }
+            return dataSuccess
         }
         else {
-            print("error")
+            usleep(1500000)
+            if let thisData = getDetail.results {
+                newData = thisData
+                print("data success second try")
+                if setMoreData(){
+                    dataSuccess = true
+                    makePriceList()
+                }
+                dataSuccess = true
+                return dataSuccess
+            }
+            else {
+                print("inner fail")
+                sleep(4)
+                if let thisData = getDetail.results {
+                    newData = thisData
+                    print("data success third try")
+                    if setMoreData(){
+                        dataSuccess = true
+                        makePriceList()
+                    }
+                    return dataSuccess
+                }
+                else {
+                    print("Data Failure")
+                    dataSuccess = false
+                    return dataSuccess
+                }
+            }
+            
+        }
+    }
+    
+    func setMoreData() -> Bool {
+        usleep(300000)
+        if let thisMoreData = getMore.datas {
+            moreData = thisMoreData
+            dataSuccess = true
+            print("more data success second dump")
+            checkData()
+            return dataSuccess
+        }
+        else {
+            usleep(1500000)
+            if let thisMoreData = getMore.datas {
+                moreData = thisMoreData
+                dataSuccess = true
+                print("data success second try second dump")
+                checkData()
+                return dataSuccess
+            }
+            else {
+                print("inner fail")
+                sleep(4)
+                if let thisMoreData = getMore.datas {
+                    moreData = thisMoreData
+                    dataSuccess = true
+                    print("data success third try second dump")
+                    checkData()
+                    return dataSuccess
+                }
+                else {
+                    print("Data Failure second dump")
+                    dataSuccess = false
+                    return dataSuccess
+                }
+            }
         }
         
+    }
+    
+    
+    func checkData(){
+        if dataSuccess{
+            refreshController.endRefreshing()
+            print(prices)
+            self.tableView.reloadData()
+            print("checkdata executed")
+        }
+    }
+    
+    ///////////////////////////
+    // MARK: -  GET DATA
+    /////////
+    
+    
+//    func requestData() {
+//        getDetail.searchDetails()
+//        sleep(2)
+//        getMore.getData()
+//        sleep(2)
+//        newData = getDetail.results
+//        moreData = getMore.datas
+//        if let newData = newData{
+//            if let moreData = moreData {
+//                makePriceList()
+//            }
+//        }
+//        else {
+//            print("error")
+//        }
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//        refreshController.endRefreshing()
+//    }
+    
+    
+    ///////////////////////////
+    // MARK: -  REFRESH CONTROLLER
+    /////////
+    
+    lazy var refreshController: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(requestData), for: .valueChanged)
+        return refreshControl
+    }()
+    
+    
+    ///////////////////////////
+    // MARK: -  VIEW DID LOAD
+    /////////
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        // Pull Down Refresh
+        tableView.refreshControl = refreshController
+        if requestData() {
+            print("data success first batch")
+        }
+        if setMoreData() {
+            makePriceList()
+            print("data success second batch")
+            
+        }
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+   
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+ 
 
     // MARK: - Table view data source
 
@@ -99,11 +231,11 @@ class PriceViewController: UITableViewController {
     }
     
     func makePriceList() {
+        prices = []
         btcp = getBTCP()
         ltcp = getLTCP()
         eosp = getEOSP()
         ethp = getETHP()
-        
         xrpp = getXRPP()
         bchp = getBCHP()
         bcnp = getBCNP()
@@ -113,7 +245,6 @@ class PriceViewController: UITableViewController {
         prices.append(ltcp)
         prices.append(eosp)
         prices.append(ethp)
-        
         prices.append(xrpp)
         prices.append(bchp)
         prices.append(bcnp)
@@ -205,7 +336,7 @@ class PriceViewController: UITableViewController {
     func getTRXP() -> [String] {
         var prices: [String] = []
         if let moreData = moreData {
-            prices.append(String("$\(moreData.raw.trx.usd.price)"))
+            prices.append("$\(moreData.raw.trx.usd.price)")
             prices.append(String(moreData.raw.trx.eur.price))
             prices.append(String(moreData.raw.trx.gbp.price))
         }
