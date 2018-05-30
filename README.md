@@ -3,7 +3,7 @@ Powered by CryptoCompare API
 
 A convenient price and statistic tracker for top 20 cryptocurrencys.
 <br>
-Supports real time price data (usd, eruo, gbp) for:
+Supports real time usd, eruo, gbp price data for:
 <ul>
 <li>BITCOIN</li> <br>
 <li>LITECOIN</li> <br>
