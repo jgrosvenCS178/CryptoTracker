@@ -1,7 +1,7 @@
 # Crypto Currency Tracker for iOS
 Powered by CryptoCompare API
 
-A convenient, lean price and statistic tracker for top 20 crypto currencys.
+A convenient price and statistic tracker for top 20 cryptocurrencys.
 <br>
 Supports real time price data (usd, eruo, gbp) for:
 <ul>
